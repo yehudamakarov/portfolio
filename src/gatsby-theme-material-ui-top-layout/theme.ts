@@ -4,7 +4,10 @@ const theme = createMuiTheme({
   //   palette: {
   //     type: 'dark',
   //   },
-  typography: { fontSize: 18 }
+  palette: { primary: { main: "#171b29" }, secondary: { main: "#a1a4aa" } },
+  typography: {
+    fontSize: 18
+  }
 })
 
 export default theme
