@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "@material-ui/core": "^4.11.4",
+    "@types/react-helmet": "^6.1.1",
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
     "gatsby-plugin-image": "^1.6.0",
@@ -13,6 +16,7 @@
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.6.0",
+    "gatsby-theme-material-ui": "^2.0.1",
     "gatsby-transformer-sharp": "^3.6.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -20,6 +24,11 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.21.5",
+    "@graphql-codegen/introspection": "^1.18.2",
+    "@graphql-codegen/typescript": "^1.22.3",
+    "@graphql-codegen/typescript-operations": "^1.18.2",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.7",
     "gatsby-plugin-ts-config": "^1.1.5",
     "prettier": "2.2.1"
   },
@@ -34,7 +43,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "ggl-types": "graphql-codegen --config codegen.yml",
+    "ggl-types:watch": "graphql-codegen --config codegen.yml -w"
   },
   "repository": {
     "type": "git",
