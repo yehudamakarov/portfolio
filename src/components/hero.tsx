@@ -106,6 +106,11 @@ export const Hero = () => {
                       <Typography variant={"button"}>Projects</Typography>
                     </Link>
                   </Grid>
+                  <Grid item>
+                    <Link to={"/blog"} color={"secondary"}>
+                      <Typography variant={"button"}>Blog</Typography>
+                    </Link>
+                  </Grid>
                 </Grid>
               </div>
               <Tooltip placement={"left"} title={"Resume"}>
