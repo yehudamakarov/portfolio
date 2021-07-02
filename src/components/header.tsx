@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
         position="sticky"
       >
         <Container maxWidth={"lg"}>
-          <Toolbar>
+          <Toolbar disableGutters>
             <Grid
               container
               alignItems="baseline"
@@ -53,12 +53,8 @@ export const Header: React.FC<HeaderProps> = ({
               className={classes.pushToRight}
             >
               <Grid item>
-                <Link to={"/"}>
-                  <Typography
-                    className={classes.inline}
-                    color={"secondary"}
-                    variant="h6"
-                  >
+                <Link color={"secondary"} to={"/"}>
+                  <Typography className={classes.inline} variant="h6">
                     {isSmall ? shortTitle : title}
                   </Typography>
                 </Link>

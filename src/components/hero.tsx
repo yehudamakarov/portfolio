@@ -12,7 +12,7 @@ import {
 import { StaticImage } from "gatsby-plugin-image"
 import { createStyles, Theme } from "@material-ui/core/styles"
 import AssignmentIcon from "@material-ui/icons/Assignment"
-import { Button } from "gatsby-theme-material-ui"
+import { Button, Link } from "gatsby-theme-material-ui"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -92,18 +92,18 @@ export const Hero = () => {
           </div>
           <div className={classes.pushToBottom} />
           <div>
-            <Toolbar>
+            <Toolbar disableGutters>
               <div className={classes.pushToRight}>
                 <Grid container spacing={isSmall ? 1 : 3}>
                   <Grid item>
-                    <Button to={"/about"} color={"secondary"}>
-                      About
-                    </Button>
+                    <Link to={"/about"} color={"secondary"}>
+                      <Typography variant={"button"}>About</Typography>
+                    </Link>
                   </Grid>
                   <Grid item>
-                    <Button to={"/projects"} color={"secondary"}>
-                      Projects
-                    </Button>
+                    <Link to={"/projects"} color={"secondary"}>
+                      <Typography variant={"button"}>Projects</Typography>
+                    </Link>
                   </Grid>
                 </Grid>
               </div>
