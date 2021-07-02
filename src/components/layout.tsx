@@ -15,15 +15,19 @@ import { Header } from "./header"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 import Seo from "./seo"
 
-const useStyles = makeStyles((theme) => createStyles({
+const useStyles = makeStyles(theme =>
+  createStyles({
     footer: {
       textAlign: "center",
-      marginTop: theme.spacing(2)
-    }
-  }
-))
+      marginTop: theme.spacing(2),
+    },
+  })
+)
 
-const Layout: React.FC<{currentPage: string}> = ({ children, currentPage }) => {
+const Layout: React.FC<{ currentPage: string }> = ({
+  children,
+  currentPage,
+}) => {
   const classes = useStyles()
   const data = useStaticQuery<SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
@@ -34,12 +38,16 @@ const Layout: React.FC<{currentPage: string}> = ({ children, currentPage }) => {
         }
       }
     }
-    `)
+  `)
 
   return (
     <TopLayout theme={theme}>
       <Seo title={currentPage} />
-      <Header shortTitle={data.site.siteMetadata.shortTitle} title={data.site.siteMetadata.title} currentPage={currentPage} />
+      <Header
+        shortTitle={data.site.siteMetadata.shortTitle}
+        title={data.site.siteMetadata.pushToRight}
+        currentPage={currentPage}
+      />
       <main>{children}</main>
       <footer className={classes.footer}>
         © {new Date().getFullYear()}, living.

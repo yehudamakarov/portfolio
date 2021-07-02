@@ -6,8 +6,8 @@ const theme = createMuiTheme({
   //   },
   palette: { primary: { main: "#171b29" }, secondary: { main: "#c3c7cf" } },
   typography: {
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 })
 
 export default theme

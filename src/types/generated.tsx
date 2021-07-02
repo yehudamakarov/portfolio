@@ -2815,7 +2815,7 @@ export type SitePluginSortInput = {
 
 export type SiteSiteMetadata = {
   __typename?: "SiteSiteMetadata"
-  title?: Maybe<Scalars["String"]>
+  pushToRight?: Maybe<Scalars["String"]>
   description?: Maybe<Scalars["String"]>
   shortTitle?: Maybe<Scalars["String"]>
   author?: Maybe<Scalars["String"]>
@@ -2956,7 +2956,7 @@ export type SiteTitleQueryQuery = { __typename?: "Query" } & {
       siteMetadata?: Maybe<
         { __typename?: "SiteSiteMetadata" } & Pick<
           SiteSiteMetadata,
-          "title" | "shortTitle"
+          "pushToRight" | "shortTitle"
         >
       >
     }
@@ -2971,7 +2971,7 @@ export type Unnamed_1_Query = { __typename?: "Query" } & {
       siteMetadata?: Maybe<
         { __typename?: "SiteSiteMetadata" } & Pick<
           SiteSiteMetadata,
-          "author" | "description" | "title"
+          "author" | "description" | "pushToRight"
         >
       >
     }

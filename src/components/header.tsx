@@ -10,60 +10,84 @@ import { GitHub } from "@material-ui/icons"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    title: {
-      flexGrow: 1
-      // display: "inline-block"
+    pushToRight: {
+      flexGrow: 1,
     },
     endIcon: { marginLeft: theme.spacing(2) },
     inline: {
-      display: "inline-block"
+      display: "inline-block",
     },
     centerInside: {
-      position: "relative"
+      position: "relative",
     },
-    center: {
-      position: "absolute",
-      top: "50%",
-      marginTop: "-15px",
-      marginLeft: theme.spacing(1)
-    }
   })
 )
 
 interface HeaderProps {
-  title: string,
-  shortTitle: string,
+  title: string
+  shortTitle: string
   currentPage: string
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, currentPage, shortTitle }) => {
+export const Header: React.FC<HeaderProps> = ({
+  title,
+  currentPage,
+  shortTitle,
+}) => {
   const classes = useStyles()
   const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"))
   return (
     <div>
-      <AppBar elevation={0} variant={"elevation"} color={"primary"} position="sticky">
+      <AppBar
+        elevation={0}
+        variant={"elevation"}
+        color={"primary"}
+        position="sticky"
+      >
         <Container maxWidth={"lg"}>
           <Toolbar>
-            <Grid container spacing={isSmall ? 1 : 2} className={classes.title}>
+            <Grid
+              container
+              alignItems="baseline"
+              spacing={isSmall ? 1 : 2}
+              className={classes.pushToRight}
+            >
               <Grid item>
                 <Link to={"/"}>
-                  <Typography className={classes.inline} color={"secondary"}
-                              variant="h6">{isSmall ? shortTitle : title}</Typography>
+                  <Typography
+                    className={classes.inline}
+                    color={"secondary"}
+                    variant="h6"
+                  >
+                    {isSmall ? shortTitle : title}
+                  </Typography>
                 </Link>
               </Grid>
               <Grid item>
                 <Typography
                   className={classes.inline}
                   color={"secondary"}
-                  variant={"h6"}>|</Typography>
+                  variant={"h6"}
+                >
+                  |
+                </Typography>
               </Grid>
               <Grid className={classes.centerInside} item>
-                <Typography className={classes.inline + " " + classes.center} color={"secondary"}
-                            variant={"subtitle2"}>{currentPage}</Typography>
+                <Typography
+                  className={classes.inline}
+                  color={"secondary"}
+                  variant={"subtitle2"}
+                >
+                  {currentPage}
+                </Typography>
               </Grid>
             </Grid>
-            <IconButton href={"https://github.com/yehudamakarov"} color={"secondary"} edge={"end"}
-                        className={classes.endIcon}>
+            <IconButton
+              href={"https://github.com/yehudamakarov"}
+              color={"secondary"}
+              edge={"end"}
+              className={classes.endIcon}
+            >
               <GitHub />
             </IconButton>
           </Toolbar>
