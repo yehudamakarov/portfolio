@@ -47,8 +47,8 @@ const useStyles = makeStyles(theme =>
       [theme.breakpoints.down("xs")]: {
         bottom: "20%",
       },
-      [theme.breakpoints.down(400)]: {
-        bottom: "5%",
+      [theme.breakpoints.down(420)]: {
+        bottom: "10%",
       },
       position: "absolute",
       left: "50%",
@@ -86,7 +86,7 @@ export const Hero = () => {
       <div className={classes.imgOverlay}>
         <Container className={classes.flexColumn} maxWidth={"lg"}>
           <div className={classes.center}>
-            <Typography variant={"overline"}>
+            <Typography variant={"body2"}>
               welcome to my site. I'm a software craftsman. feel free to browse
               around, or reach out.
             </Typography>
