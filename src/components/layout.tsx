@@ -30,6 +30,7 @@ const Layout: React.FC<{currentPage: string}> = ({ children, currentPage }) => {
       site {
         siteMetadata {
           title
+          shortTitle
         }
       }
     }
@@ -38,7 +39,7 @@ const Layout: React.FC<{currentPage: string}> = ({ children, currentPage }) => {
   return (
     <TopLayout theme={theme}>
       <Seo title={currentPage} />
-      <Header title={data.site.siteMetadata.title} currentPage={currentPage} />
+      <Header shortTitle={data.site.siteMetadata.shortTitle} title={data.site.siteMetadata.title} currentPage={currentPage} />
       <main>{children}</main>
       <footer className={classes.footer}>
         © {new Date().getFullYear()}, living.

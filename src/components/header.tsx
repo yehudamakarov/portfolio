@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
-import { Container, Grid } from "@material-ui/core"
+import { Container, Grid, useMediaQuery } from "@material-ui/core"
 import { Link } from "gatsby-theme-material-ui"
 import { GitHub } from "@material-ui/icons"
 
@@ -24,23 +24,31 @@ const useStyles = makeStyles((theme: Theme) =>
     center: {
       position: "absolute",
       top: "50%",
-      marginTop: "-15px"
+      marginTop: "-15px",
+      marginLeft: theme.spacing(1)
     }
   })
 )
 
-export const Header: React.FC<{ title: string, currentPage: string }> = ({ title, currentPage }) => {
-  const classes = useStyles()
+interface HeaderProps {
+  title: string,
+  shortTitle: string,
+  currentPage: string
+}
 
+export const Header: React.FC<HeaderProps> = ({ title, currentPage, shortTitle }) => {
+  const classes = useStyles()
+  const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"))
   return (
     <div>
       <AppBar elevation={0} variant={"elevation"} color={"primary"} position="sticky">
         <Container maxWidth={"lg"}>
           <Toolbar>
-            <Grid container spacing={3} className={classes.title}>
+            <Grid container spacing={isSmall ? 1 : 2} className={classes.title}>
               <Grid item>
                 <Link to={"/"}>
-                  <Typography className={classes.inline} color={"secondary"} variant="h6">{title}</Typography>
+                  <Typography className={classes.inline} color={"secondary"}
+                              variant="h6">{isSmall ? shortTitle : title}</Typography>
                 </Link>
               </Grid>
               <Grid item>
