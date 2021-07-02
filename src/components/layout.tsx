@@ -13,6 +13,7 @@ import theme from "../gatsby-theme-material-ui-top-layout/theme"
 import { SiteTitleQueryQuery } from "../types/generated"
 import { Header } from "./header"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
+import Seo from "./seo"
 
 const useStyles = makeStyles((theme) => createStyles({
     footer: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => createStyles({
   }
 ))
 
-const Layout = ({ children }) => {
+const Layout: React.FC<{currentPage: string}> = ({ children, currentPage }) => {
   const classes = useStyles()
   const data = useStaticQuery<SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
@@ -32,11 +33,12 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+    `)
 
   return (
     <TopLayout theme={theme}>
-      <Header title={data.site.siteMetadata.title} />
+      <Seo title={currentPage} />
+      <Header title={data.site.siteMetadata.title} currentPage={currentPage} />
       <main>{children}</main>
       <footer className={classes.footer}>
         © {new Date().getFullYear()}, living.

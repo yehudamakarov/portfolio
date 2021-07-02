@@ -5,11 +5,13 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Hero } from "../components/hero"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <Hero />
-  </Layout>
-)
-
+const IndexPage = () => {
+  const pageName = "Home"
+  return (
+    <Layout currentPage={pageName}>
+      <Seo title={pageName} />
+      <Hero />
+    </Layout>
+  )
+}
 export default IndexPage

@@ -2971,9 +2971,3 @@ export type Unnamed_1_Query = { __typename?: "Query" } & {
     }
   >
 }
-
-export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
-
-export type Unnamed_2_Query = { __typename?: "Query" } & {
-  site?: Maybe<{ __typename?: "Site" } & Pick<Site, "buildTime">>
-}

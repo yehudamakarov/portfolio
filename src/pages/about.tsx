@@ -4,10 +4,10 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const About: React.FC<PageProps> = () => {
+  const pageName = "About"
   return (
-    <Layout>
-      <Seo title={"About"} />
-
+    <Layout currentPage={pageName}>
+      <Seo title={pageName} />
     </Layout>
   )
 }
