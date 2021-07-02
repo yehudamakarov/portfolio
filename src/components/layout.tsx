@@ -6,13 +6,13 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import TopLayout from "../gatsby-theme-material-ui-top-layout/components/top-layout"
 import theme from "../gatsby-theme-material-ui-top-layout/theme"
 import { SiteTitleQueryQuery } from "../types/generated"
 import { Header } from "./header"
-import { makeStyles, createStyles } from "@material-ui/core/styles"
+import { createStyles, makeStyles } from "@material-ui/core/styles"
 import Seo from "./seo"
 
 const useStyles = makeStyles(theme =>

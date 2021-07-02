@@ -7,7 +7,7 @@
 
 import * as React from "react"
 import { Helmet, HelmetProps } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { Unnamed_1_Query } from "../types/generated"
 
 interface SeoProps {

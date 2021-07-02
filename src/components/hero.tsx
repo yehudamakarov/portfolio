@@ -12,7 +12,7 @@ import {
 import { StaticImage } from "gatsby-plugin-image"
 import { createStyles, Theme } from "@material-ui/core/styles"
 import AssignmentIcon from "@material-ui/icons/Assignment"
-import { Button, Link } from "gatsby-theme-material-ui"
+import { Link } from "gatsby-theme-material-ui"
 
 const useStyles = makeStyles(theme =>
   createStyles({
