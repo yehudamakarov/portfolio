@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme =>
       height: "100%",
       display: "flex",
       flexDirection: "column",
+      paddingBottom: theme.spacing(1),
     },
     pushToBottom: {
       flexGrow: 1,
