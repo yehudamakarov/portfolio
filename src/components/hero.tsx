@@ -75,7 +75,7 @@ export const Hero = () => {
         className={classes.div}
         imgClassName={classes.img}
         src="../images/quarry.jpeg"
-        alt={""}
+        alt={"quarry"}
       />
       <div className={classes.imgOverlay}>
         <Container className={classes.flexColumn} maxWidth={"lg"}>
