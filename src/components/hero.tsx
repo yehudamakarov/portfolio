@@ -1,30 +1,88 @@
 import * as React from "react"
-import { makeStyles, Typography } from "@material-ui/core"
+import { Container, Grid, IconButton, makeStyles, Toolbar, Tooltip, Typography } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
+import { createStyles } from "@material-ui/core/styles"
+import AssignmentIcon from "@material-ui/icons/Assignment"
+import { Button } from "gatsby-theme-material-ui"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => createStyles({
   root: {
-    height: "60vh",
-    backgroundColor: "#171b29",
     position: "relative"
   },
-  overlay: {
+  div: {
+    height: "70vh",
+    [theme.breakpoints.down("lg")]: {
+      height: "60vh"
+    },
+    width: "100vw"
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "37% 30%",
+    [theme.breakpoints.down("lg")]: {
+      objectPosition: "10% 30%"
+    }
+  },
+  imgOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.53)"
+  },
+  center: {
     position: "absolute",
     left: "50%",
-    top: "30%",
+    bottom: "30%",
     transform: "translate(-50%, -50%)",
-    color: "#a1a4aa"
+    color: theme.palette.secondary.main,
+    textAlign: "justify",
+    textJustify: "inter-word"
+  },
+  flexColumn: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column"
+  },
+  pushToBottom: {
+    flexGrow: 1
+  },
+  pushToRight: {
+    flexGrow: 1
   }
-})
+}))
 
 export const Hero = () => {
   const classes = useStyles()
   return (
-    <section>
-      <div className={classes.root} />
-      <div className={classes.overlay}>
-        <Typography variant={"caption"}>welcome to my site. I'm a software craftsman. feel free to browse around, or reach out.</Typography>
+    <div className={classes.root}>
+      <StaticImage className={classes.div} imgClassName={classes.img} src="../images/quarry.jpeg" alt={""} />
+      <div className={classes.imgOverlay}>
+        <Container className={classes.flexColumn} maxWidth={"lg"}>
+          <div className={classes.center}>
+            <Typography variant={"caption"}>welcome to my site. I'm a software craftsman. feel free to browse around, or reach out.</Typography>
+          </div>
+          <div className={classes.pushToBottom} />
+          <div>
+            <Toolbar>
+              <div className={classes.pushToRight}>
+                <Grid container spacing={3}>
+                  <Grid item><Button to={"/about"} color={"secondary"}>About</Button></Grid>
+                  <Grid item><Button to={"/projects"} color={"secondary"}>Projects</Button></Grid>
+                </Grid>
+              </div>
+              <Tooltip placement={"left"} title={"Resume"}>
+                <IconButton edge={"end"} color={"secondary"}>
+                  <AssignmentIcon />
+                </IconButton>
+              </Tooltip>
+            </Toolbar>
+          </div>
+        </Container>
       </div>
-    </section>
+    </div>
   )
 }
