@@ -45,7 +45,7 @@ const Layout: React.FC<{ currentPage: string }> = ({
       <Seo title={currentPage} />
       <Header
         shortTitle={data.site.siteMetadata.shortTitle}
-        title={data.site.siteMetadata.pushToRight}
+        title={data.site.siteMetadata.title}
         currentPage={currentPage}
       />
       <main>{children}</main>

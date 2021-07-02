@@ -39,7 +39,7 @@ const Seo: React.FC<SeoProps> = ({
 
   const metaDescription =
     pageDescription || siteInfoQuery.site.siteMetadata.description
-  const defaultTitle = siteInfoQuery.site.siteMetadata?.pushToRight
+  const defaultTitle = siteInfoQuery.site.siteMetadata?.title
   const titleTemplate = defaultTitle ? `%s | ${defaultTitle}` : null
   const mergedMeta = meta.concat([
     {
