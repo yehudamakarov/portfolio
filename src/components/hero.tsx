@@ -86,7 +86,7 @@ export const Hero = () => {
       <div className={classes.imgOverlay}>
         <Container className={classes.flexColumn} maxWidth={"lg"}>
           <div className={classes.center}>
-            <Typography variant={"caption"}>
+            <Typography variant={"overline"}>
               welcome to my site. I'm a software craftsman. feel free to browse
               around, or reach out.
             </Typography>
