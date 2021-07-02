@@ -44,15 +44,9 @@ const useStyles = makeStyles(theme =>
       background: "rgba(0,0,0,0.58)",
     },
     center: {
-      [theme.breakpoints.down("xs")]: {
-        bottom: "20%",
-      },
-      [theme.breakpoints.down(420)]: {
-        bottom: "10%",
-      },
       position: "absolute",
       left: "50%",
-      bottom: "30%",
+      top: "50%",
       transform: "translate(-50%, -50%)",
       color: theme.palette.secondary.main,
       textAlign: "left",
