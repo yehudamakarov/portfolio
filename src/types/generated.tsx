@@ -1849,6 +1849,7 @@ export enum SiteFieldsEnum {
   BuildTime = "buildTime",
   SiteMetadataTitle = "siteMetadata___title",
   SiteMetadataDescription = "siteMetadata___description",
+  SiteMetadataShortTitle = "siteMetadata___shortTitle",
   SiteMetadataAuthor = "siteMetadata___author",
   Port = "port",
   Host = "host",
@@ -2816,12 +2817,14 @@ export type SiteSiteMetadata = {
   __typename?: "SiteSiteMetadata"
   title?: Maybe<Scalars["String"]>
   description?: Maybe<Scalars["String"]>
+  shortTitle?: Maybe<Scalars["String"]>
   author?: Maybe<Scalars["String"]>
 }
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
+  shortTitle?: Maybe<StringQueryOperatorInput>
   author?: Maybe<StringQueryOperatorInput>
 }
 
@@ -2951,7 +2954,10 @@ export type SiteTitleQueryQuery = { __typename?: "Query" } & {
   site?: Maybe<
     { __typename?: "Site" } & {
       siteMetadata?: Maybe<
-        { __typename?: "SiteSiteMetadata" } & Pick<SiteSiteMetadata, "title">
+        { __typename?: "SiteSiteMetadata" } & Pick<
+          SiteSiteMetadata,
+          "title" | "shortTitle"
+        >
       >
     }
   >

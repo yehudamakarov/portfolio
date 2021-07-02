@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    shortTitle: "ym",
     title: `yehudamakarov`,
     description: `My home base on the web. For what it is worth.`,
     author: `Yehuda Moshe Makarov`

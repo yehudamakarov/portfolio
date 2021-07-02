@@ -1,7 +1,7 @@
 import * as React from "react"
-import { Container, Grid, IconButton, makeStyles, Toolbar, Tooltip, Typography } from "@material-ui/core"
+import { Container, Grid, IconButton, makeStyles, Toolbar, Tooltip, Typography, useMediaQuery } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
-import { createStyles } from "@material-ui/core/styles"
+import { createStyles, Theme } from "@material-ui/core/styles"
 import AssignmentIcon from "@material-ui/icons/Assignment"
 import { Button } from "gatsby-theme-material-ui"
 
@@ -34,13 +34,18 @@ const useStyles = makeStyles((theme) => createStyles({
     background: "rgba(0,0,0,0.53)"
   },
   center: {
+    [theme.breakpoints.down("xs")]: {
+      bottom: "20%",
+    },
+    [theme.breakpoints.down(400)]: {
+      bottom: "5%",
+    },
     position: "absolute",
     left: "50%",
     bottom: "30%",
     transform: "translate(-50%, -50%)",
     color: theme.palette.secondary.main,
-    textAlign: "justify",
-    textJustify: "inter-word"
+    textAlign: "left",
   },
   flexColumn: {
     height: "100%",
@@ -57,6 +62,7 @@ const useStyles = makeStyles((theme) => createStyles({
 
 export const Hero = () => {
   const classes = useStyles()
+  const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"))
   return (
     <div className={classes.root}>
       <StaticImage className={classes.div} imgClassName={classes.img} src="../images/quarry.jpeg" alt={""} />
@@ -69,7 +75,7 @@ export const Hero = () => {
           <div>
             <Toolbar>
               <div className={classes.pushToRight}>
-                <Grid container spacing={3}>
+                <Grid container spacing={isSmall ? 1 : 3}>
                   <Grid item><Button to={"/about"} color={"secondary"}>About</Button></Grid>
                   <Grid item><Button to={"/projects"} color={"secondary"}>Projects</Button></Grid>
                 </Grid>
