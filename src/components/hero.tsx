@@ -104,7 +104,7 @@ export const Hero = () => {
                   ))}
                 </Grid>
               </div>
-              <Tooltip placement={"left"} title={"Resume"}>
+              <Tooltip placement={"top"} title={"Resume"}>
                 <IconButton className={classes.heroTextColor} edge={"end"}>
                   <AssignmentIcon />
                 </IconButton>

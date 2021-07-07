@@ -19,13 +19,13 @@ interface PinnedRepoListProps {
 const useStyles = makeStyles(theme =>
   createStyles({
     nudgeUp: {
-      marginTop: theme.spacing(6) * -1,
+      marginTop: theme.spacing(22) * -1,
       zIndex: theme.zIndex.drawer + 1,
       position: "relative",
       padding: theme.spacing(5),
     },
     nudgedTitle: {
-      marginBottom: theme.spacing(2),
+      marginBottom: theme.spacing(3),
     },
     nudgeDown: {
       paddingTop: theme.spacing(5),
