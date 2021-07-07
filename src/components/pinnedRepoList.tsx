@@ -36,6 +36,11 @@ const useStyles = makeStyles(theme =>
     itemIcon: {
       paddingTop: theme.spacing(0.5),
     },
+    floatOnTop: {
+      marginTop: theme.spacing(-1),
+      zIndex: theme.zIndex.drawer + 1,
+      position: "relative",
+    },
   })
 )
 
@@ -93,9 +98,11 @@ export const PinnedRepoList: React.FC<PinnedRepoListProps> = ({
     )
   }
   return (
-    <Container className={classes.nudgeDown}>
-      {header}
-      {items}
-    </Container>
+    <Paper className={classes.floatOnTop}>
+      <Container className={classes.nudgeDown}>
+        {header}
+        {items}
+      </Container>
+    </Paper>
   )
 }

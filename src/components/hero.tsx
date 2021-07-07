@@ -53,6 +53,12 @@ const useStyles = makeStyles(theme =>
       top: "50%",
       transform: "translate(-50%, -50%)",
       textAlign: "left",
+      [theme.breakpoints.down("xs")]: {
+        left: "42%",
+        top: "40%",
+        transform: "translate(-42%, -40%)",
+        textAlign: "left",
+      },
     },
     flexColumn: {
       height: "100%",
@@ -95,7 +101,7 @@ export const Hero = () => {
           <div>
             <Toolbar disableGutters>
               <div className={classes.pushToRight}>
-                <Grid container spacing={isSmall ? 1 : 3}>
+                <Grid container spacing={isSmall ? 2 : 3}>
                   {["/about", "/projects", "/blog"].map(link => (
                     <Grid key={link} item>
                       <Link className={classes.heroTextColor} to={link}>
