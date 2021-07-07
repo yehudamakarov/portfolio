@@ -7,7 +7,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
     try {
       // Get from local storage by key
       const item =
-        window && window.localStorage
+        typeof window !== "undefined"
           ? window.localStorage.getItem(key)
           : undefined
       // Parse stored json or if none return initialValue
@@ -28,7 +28,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
       // Save state
       setStoredValue(valueToStore)
       // Save to local storage
-      window && window.localStorage
+      typeof window !== "undefined"
         ? window.localStorage.setItem(key, JSON.stringify(valueToStore))
         : undefined
     } catch (error) {
