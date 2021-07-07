@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     root: {
       position: "relative",
+      color: theme.palette.primary.contrastText,
     },
     div: {
       height: "70vh",
@@ -48,7 +49,6 @@ const useStyles = makeStyles(theme =>
       left: "50%",
       top: "50%",
       transform: "translate(-50%, -50%)",
-      color: theme.palette.secondary.main,
       textAlign: "left",
     },
     flexColumn: {
@@ -62,6 +62,9 @@ const useStyles = makeStyles(theme =>
     },
     pushToRight: {
       flexGrow: 1,
+    },
+    heroTextColor: {
+      color: theme.palette.common.white,
     },
   })
 )
@@ -80,7 +83,7 @@ export const Hero = () => {
       <div className={classes.imgOverlay}>
         <Container className={classes.flexColumn} maxWidth={"lg"}>
           <div className={classes.center}>
-            <Typography variant={"body2"}>
+            <Typography className={classes.heroTextColor} variant={"body2"}>
               welcome to my site. I'm a software craftsman. feel free to browse
               around, or reach out.
             </Typography>
@@ -90,25 +93,19 @@ export const Hero = () => {
             <Toolbar disableGutters>
               <div className={classes.pushToRight}>
                 <Grid container spacing={isSmall ? 1 : 3}>
-                  <Grid item>
-                    <Link to={"/about"} color={"secondary"}>
-                      <Typography variant={"button"}>About</Typography>
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link to={"/projects"} color={"secondary"}>
-                      <Typography variant={"button"}>Projects</Typography>
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link to={"/blog"} color={"secondary"}>
-                      <Typography variant={"button"}>Blog</Typography>
-                    </Link>
-                  </Grid>
+                  {["/about", "/projects", "/blog"].map(link => (
+                    <Grid key={link} item>
+                      <Link className={classes.heroTextColor} to={link}>
+                        <Typography variant={"button"}>
+                          {link.substring(1)}
+                        </Typography>
+                      </Link>
+                    </Grid>
+                  ))}
                 </Grid>
               </div>
               <Tooltip placement={"left"} title={"Resume"}>
-                <IconButton edge={"end"} color={"secondary"}>
+                <IconButton className={classes.heroTextColor} edge={"end"}>
                   <AssignmentIcon />
                 </IconButton>
               </Tooltip>

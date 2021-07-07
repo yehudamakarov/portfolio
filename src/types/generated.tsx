@@ -840,6 +840,297 @@ export type FloatQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars["Float"]>>>
 }
 
+export type GithubData = Node & {
+  __typename?: "GithubData"
+  id: Scalars["ID"]
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  data?: Maybe<GithubDataData>
+  rawResult?: Maybe<GithubDataRawResult>
+}
+
+export type GithubDataConnection = {
+  __typename?: "GithubDataConnection"
+  totalCount: Scalars["Int"]
+  edges: Array<GithubDataEdge>
+  nodes: Array<GithubData>
+  pageInfo: PageInfo
+  distinct: Array<Scalars["String"]>
+  max?: Maybe<Scalars["Float"]>
+  min?: Maybe<Scalars["Float"]>
+  sum?: Maybe<Scalars["Float"]>
+  group: Array<GithubDataGroupConnection>
+}
+
+export type GithubDataConnectionDistinctArgs = {
+  field: GithubDataFieldsEnum
+}
+
+export type GithubDataConnectionMaxArgs = {
+  field: GithubDataFieldsEnum
+}
+
+export type GithubDataConnectionMinArgs = {
+  field: GithubDataFieldsEnum
+}
+
+export type GithubDataConnectionSumArgs = {
+  field: GithubDataFieldsEnum
+}
+
+export type GithubDataConnectionGroupArgs = {
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+  field: GithubDataFieldsEnum
+}
+
+export type GithubDataData = {
+  __typename?: "GithubDataData"
+  user?: Maybe<GithubDataDataUser>
+}
+
+export type GithubDataDataFilterInput = {
+  user?: Maybe<GithubDataDataUserFilterInput>
+}
+
+export type GithubDataDataUser = {
+  __typename?: "GithubDataDataUser"
+  id?: Maybe<Scalars["String"]>
+  pinnedItems?: Maybe<GithubDataDataUserPinnedItems>
+}
+
+export type GithubDataDataUserFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  pinnedItems?: Maybe<GithubDataDataUserPinnedItemsFilterInput>
+}
+
+export type GithubDataDataUserPinnedItems = {
+  __typename?: "GithubDataDataUserPinnedItems"
+  nodes?: Maybe<Array<Maybe<GithubDataDataUserPinnedItemsNodes>>>
+}
+
+export type GithubDataDataUserPinnedItemsFilterInput = {
+  nodes?: Maybe<GithubDataDataUserPinnedItemsNodesFilterListInput>
+}
+
+export type GithubDataDataUserPinnedItemsNodes = {
+  __typename?: "GithubDataDataUserPinnedItemsNodes"
+  id?: Maybe<Scalars["String"]>
+  name?: Maybe<Scalars["String"]>
+  databaseId?: Maybe<Scalars["Int"]>
+  createdAt?: Maybe<Scalars["Date"]>
+  url?: Maybe<Scalars["String"]>
+}
+
+export type GithubDataDataUserPinnedItemsNodesCreatedAtArgs = {
+  formatString?: Maybe<Scalars["String"]>
+  fromNow?: Maybe<Scalars["Boolean"]>
+  difference?: Maybe<Scalars["String"]>
+  locale?: Maybe<Scalars["String"]>
+}
+
+export type GithubDataDataUserPinnedItemsNodesFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  databaseId?: Maybe<IntQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+}
+
+export type GithubDataDataUserPinnedItemsNodesFilterListInput = {
+  elemMatch?: Maybe<GithubDataDataUserPinnedItemsNodesFilterInput>
+}
+
+export type GithubDataEdge = {
+  __typename?: "GithubDataEdge"
+  next?: Maybe<GithubData>
+  node: GithubData
+  previous?: Maybe<GithubData>
+}
+
+export enum GithubDataFieldsEnum {
+  Id = "id",
+  ParentId = "parent___id",
+  ParentParentId = "parent___parent___id",
+  ParentParentParentId = "parent___parent___parent___id",
+  ParentParentParentChildren = "parent___parent___parent___children",
+  ParentParentChildren = "parent___parent___children",
+  ParentParentChildrenId = "parent___parent___children___id",
+  ParentParentChildrenChildren = "parent___parent___children___children",
+  ParentParentInternalContent = "parent___parent___internal___content",
+  ParentParentInternalContentDigest = "parent___parent___internal___contentDigest",
+  ParentParentInternalDescription = "parent___parent___internal___description",
+  ParentParentInternalFieldOwners = "parent___parent___internal___fieldOwners",
+  ParentParentInternalIgnoreType = "parent___parent___internal___ignoreType",
+  ParentParentInternalMediaType = "parent___parent___internal___mediaType",
+  ParentParentInternalOwner = "parent___parent___internal___owner",
+  ParentParentInternalType = "parent___parent___internal___type",
+  ParentChildren = "parent___children",
+  ParentChildrenId = "parent___children___id",
+  ParentChildrenParentId = "parent___children___parent___id",
+  ParentChildrenParentChildren = "parent___children___parent___children",
+  ParentChildrenChildren = "parent___children___children",
+  ParentChildrenChildrenId = "parent___children___children___id",
+  ParentChildrenChildrenChildren = "parent___children___children___children",
+  ParentChildrenInternalContent = "parent___children___internal___content",
+  ParentChildrenInternalContentDigest = "parent___children___internal___contentDigest",
+  ParentChildrenInternalDescription = "parent___children___internal___description",
+  ParentChildrenInternalFieldOwners = "parent___children___internal___fieldOwners",
+  ParentChildrenInternalIgnoreType = "parent___children___internal___ignoreType",
+  ParentChildrenInternalMediaType = "parent___children___internal___mediaType",
+  ParentChildrenInternalOwner = "parent___children___internal___owner",
+  ParentChildrenInternalType = "parent___children___internal___type",
+  ParentInternalContent = "parent___internal___content",
+  ParentInternalContentDigest = "parent___internal___contentDigest",
+  ParentInternalDescription = "parent___internal___description",
+  ParentInternalFieldOwners = "parent___internal___fieldOwners",
+  ParentInternalIgnoreType = "parent___internal___ignoreType",
+  ParentInternalMediaType = "parent___internal___mediaType",
+  ParentInternalOwner = "parent___internal___owner",
+  ParentInternalType = "parent___internal___type",
+  Children = "children",
+  ChildrenId = "children___id",
+  ChildrenParentId = "children___parent___id",
+  ChildrenParentParentId = "children___parent___parent___id",
+  ChildrenParentParentChildren = "children___parent___parent___children",
+  ChildrenParentChildren = "children___parent___children",
+  ChildrenParentChildrenId = "children___parent___children___id",
+  ChildrenParentChildrenChildren = "children___parent___children___children",
+  ChildrenParentInternalContent = "children___parent___internal___content",
+  ChildrenParentInternalContentDigest = "children___parent___internal___contentDigest",
+  ChildrenParentInternalDescription = "children___parent___internal___description",
+  ChildrenParentInternalFieldOwners = "children___parent___internal___fieldOwners",
+  ChildrenParentInternalIgnoreType = "children___parent___internal___ignoreType",
+  ChildrenParentInternalMediaType = "children___parent___internal___mediaType",
+  ChildrenParentInternalOwner = "children___parent___internal___owner",
+  ChildrenParentInternalType = "children___parent___internal___type",
+  ChildrenChildren = "children___children",
+  ChildrenChildrenId = "children___children___id",
+  ChildrenChildrenParentId = "children___children___parent___id",
+  ChildrenChildrenParentChildren = "children___children___parent___children",
+  ChildrenChildrenChildren = "children___children___children",
+  ChildrenChildrenChildrenId = "children___children___children___id",
+  ChildrenChildrenChildrenChildren = "children___children___children___children",
+  ChildrenChildrenInternalContent = "children___children___internal___content",
+  ChildrenChildrenInternalContentDigest = "children___children___internal___contentDigest",
+  ChildrenChildrenInternalDescription = "children___children___internal___description",
+  ChildrenChildrenInternalFieldOwners = "children___children___internal___fieldOwners",
+  ChildrenChildrenInternalIgnoreType = "children___children___internal___ignoreType",
+  ChildrenChildrenInternalMediaType = "children___children___internal___mediaType",
+  ChildrenChildrenInternalOwner = "children___children___internal___owner",
+  ChildrenChildrenInternalType = "children___children___internal___type",
+  ChildrenInternalContent = "children___internal___content",
+  ChildrenInternalContentDigest = "children___internal___contentDigest",
+  ChildrenInternalDescription = "children___internal___description",
+  ChildrenInternalFieldOwners = "children___internal___fieldOwners",
+  ChildrenInternalIgnoreType = "children___internal___ignoreType",
+  ChildrenInternalMediaType = "children___internal___mediaType",
+  ChildrenInternalOwner = "children___internal___owner",
+  ChildrenInternalType = "children___internal___type",
+  InternalContent = "internal___content",
+  InternalContentDigest = "internal___contentDigest",
+  InternalDescription = "internal___description",
+  InternalFieldOwners = "internal___fieldOwners",
+  InternalIgnoreType = "internal___ignoreType",
+  InternalMediaType = "internal___mediaType",
+  InternalOwner = "internal___owner",
+  InternalType = "internal___type",
+  DataUserId = "data___user___id",
+  DataUserPinnedItemsNodes = "data___user___pinnedItems___nodes",
+  RawResultDataUserId = "rawResult___data___user___id",
+}
+
+export type GithubDataFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  data?: Maybe<GithubDataDataFilterInput>
+  rawResult?: Maybe<GithubDataRawResultFilterInput>
+}
+
+export type GithubDataGroupConnection = {
+  __typename?: "GithubDataGroupConnection"
+  totalCount: Scalars["Int"]
+  edges: Array<GithubDataEdge>
+  nodes: Array<GithubData>
+  pageInfo: PageInfo
+  field: Scalars["String"]
+  fieldValue?: Maybe<Scalars["String"]>
+}
+
+export type GithubDataRawResult = {
+  __typename?: "GithubDataRawResult"
+  data?: Maybe<GithubDataRawResultData>
+}
+
+export type GithubDataRawResultData = {
+  __typename?: "GithubDataRawResultData"
+  user?: Maybe<GithubDataRawResultDataUser>
+}
+
+export type GithubDataRawResultDataFilterInput = {
+  user?: Maybe<GithubDataRawResultDataUserFilterInput>
+}
+
+export type GithubDataRawResultDataUser = {
+  __typename?: "GithubDataRawResultDataUser"
+  id?: Maybe<Scalars["String"]>
+  pinnedItems?: Maybe<GithubDataRawResultDataUserPinnedItems>
+}
+
+export type GithubDataRawResultDataUserFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  pinnedItems?: Maybe<GithubDataRawResultDataUserPinnedItemsFilterInput>
+}
+
+export type GithubDataRawResultDataUserPinnedItems = {
+  __typename?: "GithubDataRawResultDataUserPinnedItems"
+  nodes?: Maybe<Array<Maybe<GithubDataRawResultDataUserPinnedItemsNodes>>>
+}
+
+export type GithubDataRawResultDataUserPinnedItemsFilterInput = {
+  nodes?: Maybe<GithubDataRawResultDataUserPinnedItemsNodesFilterListInput>
+}
+
+export type GithubDataRawResultDataUserPinnedItemsNodes = {
+  __typename?: "GithubDataRawResultDataUserPinnedItemsNodes"
+  id?: Maybe<Scalars["String"]>
+  name?: Maybe<Scalars["String"]>
+  databaseId?: Maybe<Scalars["Int"]>
+  createdAt?: Maybe<Scalars["Date"]>
+  url?: Maybe<Scalars["String"]>
+}
+
+export type GithubDataRawResultDataUserPinnedItemsNodesCreatedAtArgs = {
+  formatString?: Maybe<Scalars["String"]>
+  fromNow?: Maybe<Scalars["Boolean"]>
+  difference?: Maybe<Scalars["String"]>
+  locale?: Maybe<Scalars["String"]>
+}
+
+export type GithubDataRawResultDataUserPinnedItemsNodesFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  databaseId?: Maybe<IntQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+}
+
+export type GithubDataRawResultDataUserPinnedItemsNodesFilterListInput = {
+  elemMatch?: Maybe<GithubDataRawResultDataUserPinnedItemsNodesFilterInput>
+}
+
+export type GithubDataRawResultFilterInput = {
+  data?: Maybe<GithubDataRawResultDataFilterInput>
+}
+
+export type GithubDataSortInput = {
+  fields?: Maybe<Array<Maybe<GithubDataFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
 export enum ImageCropFocus {
   Center = "CENTER",
   North = "NORTH",
@@ -1388,6 +1679,8 @@ export type Query = {
   allSitePage: SitePageConnection
   imageSharp?: Maybe<ImageSharp>
   allImageSharp: ImageSharpConnection
+  githubData?: Maybe<GithubData>
+  allGithubData: GithubDataConnection
   siteBuildMetadata?: Maybe<SiteBuildMetadata>
   allSiteBuildMetadata: SiteBuildMetadataConnection
   sitePlugin?: Maybe<SitePlugin>
@@ -1569,6 +1862,22 @@ export type QueryImageSharpArgs = {
 export type QueryAllImageSharpArgs = {
   filter?: Maybe<ImageSharpFilterInput>
   sort?: Maybe<ImageSharpSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryGithubDataArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  data?: Maybe<GithubDataDataFilterInput>
+  rawResult?: Maybe<GithubDataRawResultFilterInput>
+}
+
+export type QueryAllGithubDataArgs = {
+  filter?: Maybe<GithubDataFilterInput>
+  sort?: Maybe<GithubDataSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -2367,6 +2676,8 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsAllExtensions = "pluginCreator___pluginOptions___allExtensions",
   PluginCreatorPluginOptionsIsTsx = "pluginCreator___pluginOptions___isTSX",
   PluginCreatorPluginOptionsJsxPragma = "pluginCreator___pluginOptions___jsxPragma",
+  PluginCreatorPluginOptionsToken = "pluginCreator___pluginOptions___token",
+  PluginCreatorPluginOptionsGraphQlQuery = "pluginCreator___pluginOptions___graphQLQuery",
   PluginCreatorNodeApIs = "pluginCreator___nodeAPIs",
   PluginCreatorBrowserApIs = "pluginCreator___browserAPIs",
   PluginCreatorSsrApIs = "pluginCreator___ssrAPIs",
@@ -2597,6 +2908,8 @@ export enum SitePluginFieldsEnum {
   PluginOptionsAllExtensions = "pluginOptions___allExtensions",
   PluginOptionsIsTsx = "pluginOptions___isTSX",
   PluginOptionsJsxPragma = "pluginOptions___jsxPragma",
+  PluginOptionsToken = "pluginOptions___token",
+  PluginOptionsGraphQlQuery = "pluginOptions___graphQLQuery",
   NodeApIs = "nodeAPIs",
   BrowserApIs = "browserAPIs",
   SsrApIs = "ssrAPIs",
@@ -2743,6 +3056,8 @@ export type SitePluginPluginOptions = {
   allExtensions?: Maybe<Scalars["Boolean"]>
   isTSX?: Maybe<Scalars["Boolean"]>
   jsxPragma?: Maybe<Scalars["String"]>
+  token?: Maybe<Scalars["String"]>
+  graphQLQuery?: Maybe<Scalars["String"]>
 }
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -2773,6 +3088,8 @@ export type SitePluginPluginOptionsFilterInput = {
   allExtensions?: Maybe<BooleanQueryOperatorInput>
   isTSX?: Maybe<BooleanQueryOperatorInput>
   jsxPragma?: Maybe<StringQueryOperatorInput>
+  token?: Maybe<StringQueryOperatorInput>
+  graphQLQuery?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsFonts = {
@@ -2973,6 +3290,42 @@ export type Unnamed_1_Query = { __typename?: "Query" } & {
           SiteSiteMetadata,
           "author" | "description" | "title"
         >
+      >
+    }
+  >
+}
+
+export type PinnedRepositoriesQueryVariables = Exact<{ [key: string]: never }>
+
+export type PinnedRepositoriesQuery = { __typename?: "Query" } & {
+  githubData?: Maybe<
+    { __typename?: "GithubData" } & {
+      data?: Maybe<
+        { __typename?: "GithubDataData" } & {
+          user?: Maybe<
+            { __typename?: "GithubDataDataUser" } & Pick<
+              GithubDataDataUser,
+              "id"
+            > & {
+                pinnedItems?: Maybe<
+                  { __typename?: "GithubDataDataUserPinnedItems" } & {
+                    nodes?: Maybe<
+                      Array<
+                        Maybe<
+                          {
+                            __typename?: "GithubDataDataUserPinnedItemsNodes"
+                          } & Pick<
+                            GithubDataDataUserPinnedItemsNodes,
+                            "url" | "name" | "id" | "databaseId" | "createdAt"
+                          >
+                        >
+                      >
+                    >
+                  }
+                >
+              }
+          >
+        }
       >
     }
   >

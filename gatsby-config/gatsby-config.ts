@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     shortTitle: "ym",
@@ -34,5 +38,30 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-config-plugin-offline`,
     `gatsby-theme-material-ui`,
+    {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        token: process.env.GITHUB_API_TOKEN,
+        variables: {},
+        graphQLQuery: `
+        query {
+          user(login: "yehudamakarov") {
+            id
+            pinnedItems(first: 10) {
+              nodes {
+                ... on Repository {
+                  id
+                  name
+                  databaseId
+                  createdAt
+                  url
+                }
+              }
+            }
+          }
+        }
+        `,
+      },
+    },
   ],
 }
