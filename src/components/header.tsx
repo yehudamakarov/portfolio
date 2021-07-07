@@ -49,6 +49,8 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const classes = useStyles()
   const theme = useTheme()
+  console.assert(theme.palette.type === "light")
+
   const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"))
   return (
     <div>
