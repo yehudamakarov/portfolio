@@ -29,12 +29,13 @@ const useStyles = makeStyles(theme =>
     },
     nudgeDown: {
       paddingTop: theme.spacing(5),
+      paddingBottom: theme.spacing(5),
     },
     itemTitle: {
       display: "inline",
     },
     itemIcon: {
-      paddingTop: theme.spacing(0.5),
+      paddingTop: `${theme.spacing(1)}px !important`,
     },
     floatOnTop: {
       marginTop: theme.spacing(-1),
@@ -54,14 +55,18 @@ export const PinnedRepoList: React.FC<PinnedRepoListProps> = ({
   const items = pinnedRepos.map(pr => (
     <div key={pr.id}>
       <Link color={"textPrimary"} to={pr.url}>
-        <Grid alignItems={"flex-start"} container>
+        <Grid alignItems={"flex-start"} container spacing={1}>
           <Grid className={classes.itemIcon} item>
             <Icon>
               <BookIcon />
             </Icon>
           </Grid>
           <Grid item>
-            <Typography className={classes.itemTitle} variant={"h6"}>
+            <Typography
+              gutterBottom
+              className={classes.itemTitle}
+              variant={"h6"}
+            >
               {pr.name}
             </Typography>
           </Grid>
