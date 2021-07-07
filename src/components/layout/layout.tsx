@@ -33,7 +33,6 @@ const Layout: React.FC<{ currentPage: string }> = ({
       createTheme({
         palette: {
           type: darkModeEnabled ? "dark" : "light",
-
           primary: {
             main: "#171b29",
           },
@@ -54,6 +53,7 @@ const Layout: React.FC<{ currentPage: string }> = ({
       }),
     [darkModeEnabled, prefersDarkMode, setDarkModeEnabled]
   )
+  console.log(theme)
   const data = useStaticQuery<SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
       site {
