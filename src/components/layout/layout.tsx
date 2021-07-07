@@ -21,9 +21,7 @@ const Layout: React.FC<{ currentPage: string }> = ({
   children,
   currentPage,
 }) => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)", {
-    noSsr: true,
-  })
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)")
   const [darkModeEnabled, setDarkModeEnabled] = useLocalStorage(
     "dark-mode-enabled",
     prefersDarkMode
