@@ -13,7 +13,7 @@ export default function Index() {
                 <Typography variant="h4" component="h1" gutterBottom>
                     Gatsby v5 example
                 </Typography>
-                <Link to="/about" color="secondary">
+                <Link to="/about">
                     Go to the about page
                 </Link>
                 <ProTip/>

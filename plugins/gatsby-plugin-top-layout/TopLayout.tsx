@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Helmet} from 'react-helmet';
 import CssBaseline from '@mui/material/CssBaseline';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {red} from "@mui/material/colors";
 import {useDarkMode} from "../../src/utils/useDarkMode";
 
 export interface DarkModeContextType {
@@ -22,13 +21,10 @@ export default function TopLayout(props) {
             palette: {
                 mode: darkModeEnabled ? "dark" : "light",
                 primary: {
-                    main: '#556cd6',
+                    main: "#171b29",
                 },
                 secondary: {
-                    main: '#19857b',
-                },
-                error: {
-                    main: red.A400,
+                    main: "#474E38",
                 },
             },
         }), [darkModeEnabled, setDarkModeEnabled]

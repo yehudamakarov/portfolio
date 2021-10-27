@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import ProTip from '../components/ProTip';
 import Link from '../components/Link';
 import Copyright from '../components/Copyright';
-import DarkModeButton from "../components/DarkModeButton";
+import DarkModeButton from "../components/titleBar/buttons/DarkModeButton";
 
 export default function About() {
     return (
