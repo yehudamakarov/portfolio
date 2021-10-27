@@ -11,15 +11,20 @@
     "@mui/material": "latest",
     "@mui/utils": "^5.0.1",
     "gatsby": "latest",
+    "gatsby-plugin-graphql-codegen": "^3.0.0",
     "gatsby-plugin-react-helmet": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-helmet": "latest"
+    "react-helmet": "latest",
+    "typescript": "^4.4.4"
   },
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
+  "devDependencies": {
+    "@graphql-codegen/typescript": "^2.2.4"
   }
 }
