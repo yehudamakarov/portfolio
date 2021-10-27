@@ -3,10 +3,12 @@
   "version": "2.0",
   "private": true,
   "dependencies": {
+    "@emotion/cache": "^11.5.0",
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
     "@mui/material": "latest",
+    "@mui/utils": "^5.0.1",
     "gatsby": "latest",
     "gatsby-plugin-react-helmet": "latest",
     "react": "latest",

@@ -5,6 +5,6 @@ module.exports = {
     'gatsby-plugin-mui-emotion',
   ],
   siteMetadata: {
-    title: 'My page',
+    title: 'yehuda makarovs site',
   },
 };
