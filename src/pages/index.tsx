@@ -7,18 +7,18 @@ import Link from '../components/Link';
 import Copyright from '../components/Copyright';
 
 export default function Index() {
-  return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Gatsby v5 example
-        </Typography>
-        <Link to="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
-  );
+    return (
+        <Container maxWidth="sm">
+            <Box sx={{my: 4}}>
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Gatsby v5 example
+                </Typography>
+                <Link to="/about" color="secondary">
+                    Go to the about page
+                </Link>
+                <ProTip/>
+                <Copyright/>
+            </Box>
+        </Container>
+    );
 }
