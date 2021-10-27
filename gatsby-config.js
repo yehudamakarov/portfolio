@@ -1,6 +1,10 @@
-const { generateConfig } = require('gatsby-plugin-ts-config');
-
-module.exports = generateConfig({
-  configDir: 'gatsby-config', // or wherever you would like to store your gatsby-config files
-  projectRoot: __dirname,
-});
+module.exports = {
+  plugins: [
+    'gatsby-plugin-top-layout',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-mui-emotion',
+  ],
+  siteMetadata: {
+    title: 'My page',
+  },
+};
