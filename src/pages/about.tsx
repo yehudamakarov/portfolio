@@ -5,9 +5,10 @@ import Box from "@mui/material/Box"
 import ProTip from "../components/ProTip"
 import Link from "../components/Link"
 import Copyright from "../components/Copyright"
-import DarkModeButton from "../components/titleBar/buttons/DarkModeButton"
+import DarkModeButton from "../components/layout/nav/titleBar/buttons/DarkModeButton"
 import { Layout } from "../components/layout/Layout"
 import { PageProps } from "gatsby"
+import { HomeButton } from "../components/layout/nav/titleBar/buttons/HomeButton"
 
 export default (props: PageProps) => (
   <Layout pageProps={props}>

@@ -19,6 +19,8 @@ export default function TopLayout(props) {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode()
   const theme = React.useMemo(() => createTheme({
       palette: {
+        // todo https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
+        // todo fix the link colors in dark mode
         mode: darkModeEnabled ? "dark" : "light",
         primary: {
           main: "#171b29"

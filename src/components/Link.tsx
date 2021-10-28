@@ -6,7 +6,7 @@ interface CustomGatsbyLink extends Omit<GatsbyLinkProps<Record<string, unknown>>
 }
 
 const Link = React.forwardRef<GatsbyLink<any>, CustomGatsbyLink>(function Link(props, ref) {
-    return <MuiLink color="inherit" component={GatsbyLink} ref={ref} {...props} />;
+    return <MuiLink component={GatsbyLink} ref={ref} {...props} />;
 });
 
 export default Link;

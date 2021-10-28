@@ -1,4 +1,4 @@
-import {DarkModeContext, DarkModeContextType} from "../../../../plugins/gatsby-plugin-top-layout/TopLayout";
+import {DarkModeContext, DarkModeContextType} from "../../../../../../plugins/gatsby-plugin-top-layout/TopLayout";
 import {IconButton} from "@mui/material";
 import {Brightness4} from "@mui/icons-material"
 import * as React from "react";

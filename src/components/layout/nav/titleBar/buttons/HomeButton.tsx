@@ -1,19 +1,31 @@
-import { Grid, Theme, Typography, useMediaQuery, useTheme } from "@mui/material"
-import Link from "../../Link"
-import { SiteInfoContext } from "../../layout/Layout"
+import * as React from "react"
+import { Grid, Theme, Typography, useMediaQuery } from "@mui/material"
+import { SxProps } from "@mui/system"
+import Link from "../../../../Link"
+import { SiteInfoContext } from "../../../Layout"
+import { WindowLocation } from "@reach/router"
 
-export const HomeButton = () => {
-  const theme = useTheme()
+interface HomeButtonProps {
+  sxProps: SxProps<Theme>
+}
+
+function getCurrentPageFromLocation(location: WindowLocation<WindowLocation["state"]>) {
+  return location.pathname === "/" ? "home" : location.pathname.slice(1)
+}
+
+export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("xs"))
+
   return (
     <SiteInfoContext.Consumer>{(value => {
       const { title, shortTitle } = value.siteInfoQuery.site.siteMetadata
+      const currentPage = getCurrentPageFromLocation(value.layoutProps.pageProps.location)
       return (
         <Grid
           container
           alignItems="baseline"
           spacing={isSmall ? 1 : 2}
-          sx={{ flexGrow: 1 }}
+          sx={sxProps}
         >
           <Grid item>
             <Link to={"/"}>
@@ -24,17 +36,15 @@ export const HomeButton = () => {
           </Grid>
           <Grid item>
             <Typography
-              className={classes.inline}
-              color={"textPrimary"}
+              sx={{ display: "inline-block" }}
               variant={"h6"}
             >
               |
             </Typography>
           </Grid>
-          <Grid className={classes.centerInside} item>
+          <Grid sx={{ position: "relative" }} item>
             <Typography
-              className={classes.inline}
-              color={"textPrimary"}
+              sx={{ display: "inline-block" }}
               variant={"subtitle2"}
             >
               {currentPage}
