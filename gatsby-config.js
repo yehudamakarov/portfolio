@@ -8,10 +8,19 @@ module.exports = {
       options: {
         fileName: `./gatsby-graphql.ts`,
         documentPaths: [
-          "./src/**/*.{ts,tsx}",
+          "./src/**/*.{ts,tsx}"
         ]
       }
-    }
+    },
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`
+      }
+    },
+    `gatsby-plugin-sharp`,
   ],
   siteMetadata: {
     shortTitle: "ym",

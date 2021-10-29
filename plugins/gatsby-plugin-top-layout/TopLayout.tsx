@@ -1,6 +1,6 @@
 import * as React from "react"
 import CssBaseline from "@mui/material/CssBaseline"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles"
 import { useDarkMode } from "../../src/utils/useDarkMode"
 import MyTopHelmet from "./helmet/MyTopHelmet"
 
@@ -17,19 +17,28 @@ export const DarkModeContext = React.createContext<DarkModeContextType>({
 
 export default function TopLayout(props) {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode()
-  const theme = React.useMemo(() => createTheme({
-      palette: {
-        // todo https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
-        // todo fix the link colors in dark mode
-        mode: darkModeEnabled ? "dark" : "light",
-        primary: {
-          main: "#171b29"
-        },
-        secondary: {
-          main: "#474E38"
-        }
+
+  const getOptions = (darkModeEnabled: boolean): ThemeOptions => (darkModeEnabled ? {
+    palette: {
+      mode: "dark",
+      primary: {
+        main: "#171b29"
+      },
+      secondary: {
+        main: "#474E38"
+      },
+
+    }
+  } : {
+    palette: {
+      mode: "light",
+      primary: {
+        main: "#474E38"
       }
-    }), [darkModeEnabled, setDarkModeEnabled]
+    }
+  })
+
+  const theme = React.useMemo(() => createTheme(getOptions(darkModeEnabled)), [darkModeEnabled, setDarkModeEnabled]
   )
 
   return (

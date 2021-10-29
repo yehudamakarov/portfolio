@@ -9,8 +9,9 @@ interface HomeButtonProps {
   sxProps: SxProps<Theme>
 }
 
-function getCurrentPageFromLocation(location: WindowLocation<WindowLocation["state"]>) {
-  return location.pathname === "/" ? "home" : location.pathname.slice(1)
+function getCurrentPageFromLocationCapitalized(location: WindowLocation<WindowLocation["state"]>) {
+  const page = location.pathname === "/" ? "home" : location.pathname.slice(1)
+  return page.charAt(0).toUpperCase() + page.slice(1)
 }
 
 export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
@@ -19,7 +20,7 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
   return (
     <SiteInfoContext.Consumer>{(value => {
       const { title, shortTitle } = value.siteInfoQuery.site.siteMetadata
-      const currentPage = getCurrentPageFromLocation(value.layoutProps.pageProps.location)
+      const currentPage = getCurrentPageFromLocationCapitalized(value.layoutProps.pageProps.location)
       return (
         <Grid
           container
