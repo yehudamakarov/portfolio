@@ -3,7 +3,7 @@ import { Layout } from "../components/layout/Layout"
 import { PageProps } from "gatsby"
 
 
-export const NotFoundPage: React.FC<PageProps> = (props) => {
+export default (props: PageProps) => {
   return (
     <Layout pageProps={props}>
       <h1>404: Not Found</h1>
