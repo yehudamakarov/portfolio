@@ -18,7 +18,7 @@ export const MyHeader: React.FC<{}> = () => {
           <Toolbar disableGutters>
             <HomeButton sxProps={{ flexGrow: 1 }} />
             <DarkModeButton />
-            <GithubHomeButton sxProps={{ marginLeft: 1 }} />
+            <GithubHomeButton sxProps={{ marginLeft: 1, color: "text.primary" }} />
           </Toolbar>
         </Container>
       </AppBar>

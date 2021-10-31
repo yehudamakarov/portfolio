@@ -14,7 +14,7 @@ export const GithubHomeButton: React.FC<GithubHomeButtonProps> = ({sxProps}) => 
       edge={"start"}
       sx={sxProps}
     >
-      <GitHub sx={{color: 'text.primary'}} />
+      <GitHub />
     </IconButton>
   )
 }

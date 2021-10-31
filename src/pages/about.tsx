@@ -8,7 +8,6 @@ import Copyright from "../components/Copyright"
 import DarkModeButton from "../components/layout/nav/titleBar/buttons/DarkModeButton"
 import { Layout } from "../components/layout/Layout"
 import { PageProps } from "gatsby"
-import { HomeButton } from "../components/layout/nav/titleBar/buttons/HomeButton"
 
 export default (props: PageProps) => (
   <Layout pageProps={props}>

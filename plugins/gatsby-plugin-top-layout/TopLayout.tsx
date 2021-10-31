@@ -20,21 +20,20 @@ export default function TopLayout(props) {
 
   const getOptions = (darkModeEnabled: boolean): ThemeOptions => (darkModeEnabled ? {
     palette: {
-      mode: "dark",
-      primary: {
-        main: "#171b29"
-      },
-      secondary: {
-        main: "#474E38"
-      },
-
+      mode: "dark"
+      // primary: {
+      //   main: "#171b29"
+      // },
+      // secondary: {
+      //   main: "#474E38"
+      // },
     }
   } : {
     palette: {
-      mode: "light",
-      primary: {
-        main: "#474E38"
-      }
+      mode: "light"
+      // primary: {
+      //   main: "#474E38"
+      // }
     }
   })
 

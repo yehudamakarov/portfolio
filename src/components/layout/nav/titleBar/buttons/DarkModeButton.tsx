@@ -10,8 +10,8 @@ export default function DarkModeButton() {
     return (
         <DarkModeContext.Consumer>
             {(value => (
-                <IconButton onClick={() => handler(value)}>
-                    <Brightness4 sx={{color: 'text.primary'}}/>
+                <IconButton sx={{color: 'text.primary'}} onClick={() => handler(value)}>
+                    <Brightness4/>
                 </IconButton>
             ))}
         </DarkModeContext.Consumer>

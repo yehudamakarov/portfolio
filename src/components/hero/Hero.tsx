@@ -1,36 +1,40 @@
 import * as React from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  IconButton,
-  Theme,
-  Toolbar,
-  Tooltip,
-  Typography,
-  useMediaQuery,
-  useTheme
-} from "@mui/material"
+import { Box, Button, Container, Grid, Theme, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { StaticImage } from "gatsby-plugin-image"
-import "./Hero.css"
 import Link from "../Link"
 import { Assignment } from "@mui/icons-material"
+import { ClassNames } from "@emotion/react"
 
 interface HeroProps {
 }
 
-export const Hero: React.FC<HeroProps> = (props) => {
+export const Hero: React.FC<HeroProps> = () => {
   const theme = useTheme()
-  const isLessThanXs = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"))
-  const isLessThanLg = useMediaQuery((theme: Theme) => theme.breakpoints.down("lg"))
+  const isLessThanSm = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"))
   return (
     <Box sx={{ position: "relative", color: theme.palette.primary.contrastText }}>
-      <StaticImage
-        className={"image-container" + " " + (isLessThanLg ? "image-container-ltlg" : "image-container-lg")}
-        imgClassName={"image" + " " + (isLessThanLg ? "image-ltlg" : "image-lg")}
-        src="../../images/quarry.jpeg"
-        alt={"quarry"}
-      />
+      <ClassNames>{({ css }) =>
+        <StaticImage
+          className={css`
+            width: 100vw;
+            height: 70vh;
+            ${theme.breakpoints.down("lg")}: {
+              height: 60vh;
+            }
+          `}
+          imgClassName={css`
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 37% 30%;
+            ${theme.breakpoints.down("lg")}: {
+              object-position: 10% 30%;
+            }
+          `}
+          src="../../images/quarry.jpeg"
+          alt={"quarry"}
+        />}
+      </ClassNames>
       <Box sx={{
         position: "absolute",
         top: 0,
@@ -65,11 +69,11 @@ export const Hero: React.FC<HeroProps> = (props) => {
           <Box>
             <Toolbar disableGutters>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={isLessThanXs ? 2 : 3}>
+                <Grid container spacing={isLessThanSm ? 1 : 2}>
                   {["/about", "/projects", "/blog"].map(link => (
                     <Grid key={link} item>
-                      <Link to={link}>
-                        <Typography sx={{ color: "common.white" }} variant={"button"}>
+                      <Link to={link} white>
+                        <Typography variant={"button"} >
                           {link.substring(1)}
                         </Typography>
                       </Link>
@@ -77,11 +81,7 @@ export const Hero: React.FC<HeroProps> = (props) => {
                   ))}
                 </Grid>
               </Box>
-              <Tooltip placement={"top"} title={"Resume"}>
-                <IconButton sx={{ color: "common.white" }} edge={"start"}>
-                  <Assignment />
-                </IconButton>
-              </Tooltip>
+              <Button size={"small"} sx={{color: 'common.white'}} endIcon={<Assignment />}>Resume</Button>
             </Toolbar>
           </Box>
         </Container>

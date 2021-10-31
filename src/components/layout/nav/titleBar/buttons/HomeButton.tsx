@@ -15,8 +15,7 @@ function getCurrentPageFromLocationCapitalized(location: WindowLocation<WindowLo
 }
 
 export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
-  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("xs"))
-
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"))
   return (
     <SiteInfoContext.Consumer>{(value => {
       const { title, shortTitle } = value.siteInfoQuery.site.siteMetadata
