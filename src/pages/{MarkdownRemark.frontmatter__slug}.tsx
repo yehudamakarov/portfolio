@@ -11,7 +11,36 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
   return (
     <Layout pageProps={props}>
       <Container maxWidth={"md"}>
-        <Box sx={{ my: 3, p: 2 }} dangerouslySetInnerHTML={{ __html: html }} />
+        <Box
+          sx={{
+            my: 3,
+            p: 2,
+            "& h1, & h2, & h3, & h4": {
+              "& .anchor": {
+                // To prevent the link to get the focus.
+                display: "none"
+              },
+              "& a:not(.anchor):hover": {
+                color: "currentColor",
+                borderBottom: "1px solid currentColor",
+                textDecoration: "none"
+              },
+              "&:hover .anchor": {
+                display: "inline-block",
+                padding: "0 8px",
+                color: 'text.secondary',
+                "&:hover": {
+                  color: 'text.primary'
+                },
+                "& svg": {
+                  width: "0.7em",
+                  height: "0.7em",
+                  fill: "currentColor"
+                }
+              }
+            }
+          }}
+          dangerouslySetInnerHTML={{ __html: html }} />
       </Container>
     </Layout>
   )
