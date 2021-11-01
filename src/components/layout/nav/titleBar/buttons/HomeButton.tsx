@@ -23,8 +23,8 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
       return (
         <Grid
           container
-          alignItems="baseline"
-          spacing={isSmall ? 1 : 2}
+          alignItems="center"
+          spacing={1}
           sx={sxProps}
         >
           <Grid item>

@@ -248,6 +248,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -351,6 +353,77 @@ export type GatsbyImagePlaceholder =
   | 'BLURRED'
   | 'NONE';
 
+export type GithubData = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  data?: Maybe<GithubDataData>;
+  rawResult?: Maybe<GithubDataRawResult>;
+};
+
+export type GithubDataData = {
+  user?: Maybe<GithubDataDataUser>;
+};
+
+export type GithubDataDataUser = {
+  id?: Maybe<Scalars['String']>;
+  pinnedItems?: Maybe<GithubDataDataUserPinnedItems>;
+};
+
+export type GithubDataDataUserPinnedItems = {
+  nodes?: Maybe<Array<Maybe<GithubDataDataUserPinnedItemsNodes>>>;
+};
+
+export type GithubDataDataUserPinnedItemsNodes = {
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  databaseId?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+
+export type GithubDataDataUserPinnedItemsNodesCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type GithubDataRawResult = {
+  data?: Maybe<GithubDataRawResultData>;
+};
+
+export type GithubDataRawResultData = {
+  user?: Maybe<GithubDataRawResultDataUser>;
+};
+
+export type GithubDataRawResultDataUser = {
+  id?: Maybe<Scalars['String']>;
+  pinnedItems?: Maybe<GithubDataRawResultDataUserPinnedItems>;
+};
+
+export type GithubDataRawResultDataUserPinnedItems = {
+  nodes?: Maybe<Array<Maybe<GithubDataRawResultDataUserPinnedItemsNodes>>>;
+};
+
+export type GithubDataRawResultDataUserPinnedItemsNodes = {
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  databaseId?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+
+export type GithubDataRawResultDataUserPinnedItemsNodesCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   file?: Maybe<File>;
   allFile: FileConnection;
@@ -366,6 +439,8 @@ export type Query = {
   allSitePlugin: SitePluginConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
+  githubData?: Maybe<GithubData>;
+  allGithubData: GithubDataConnection;
 };
 
 
@@ -469,6 +544,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -569,6 +646,24 @@ export type QuerySiteBuildMetadataArgs = {
 export type QueryAllSiteBuildMetadataArgs = {
   filter?: Maybe<SiteBuildMetadataFilterInput>;
   sort?: Maybe<SiteBuildMetadataSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryGithubDataArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  data?: Maybe<GithubDataDataFilterInput>;
+  rawResult?: Maybe<GithubDataRawResultFilterInput>;
+};
+
+
+export type QueryAllGithubDataArgs = {
+  filter?: Maybe<GithubDataFilterInput>;
+  sort?: Maybe<GithubDataSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -1218,6 +1313,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___shortTitle'
   | 'siteMetadata___author'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -1351,6 +1448,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2211,7 +2310,260 @@ export type SiteBuildMetadataSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type GithubDataDataFilterInput = {
+  user?: Maybe<GithubDataDataUserFilterInput>;
+};
+
+export type GithubDataDataUserFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  pinnedItems?: Maybe<GithubDataDataUserPinnedItemsFilterInput>;
+};
+
+export type GithubDataDataUserPinnedItemsFilterInput = {
+  nodes?: Maybe<GithubDataDataUserPinnedItemsNodesFilterListInput>;
+};
+
+export type GithubDataDataUserPinnedItemsNodesFilterListInput = {
+  elemMatch?: Maybe<GithubDataDataUserPinnedItemsNodesFilterInput>;
+};
+
+export type GithubDataDataUserPinnedItemsNodesFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  databaseId?: Maybe<IntQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+};
+
+export type GithubDataRawResultFilterInput = {
+  data?: Maybe<GithubDataRawResultDataFilterInput>;
+};
+
+export type GithubDataRawResultDataFilterInput = {
+  user?: Maybe<GithubDataRawResultDataUserFilterInput>;
+};
+
+export type GithubDataRawResultDataUserFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  pinnedItems?: Maybe<GithubDataRawResultDataUserPinnedItemsFilterInput>;
+};
+
+export type GithubDataRawResultDataUserPinnedItemsFilterInput = {
+  nodes?: Maybe<GithubDataRawResultDataUserPinnedItemsNodesFilterListInput>;
+};
+
+export type GithubDataRawResultDataUserPinnedItemsNodesFilterListInput = {
+  elemMatch?: Maybe<GithubDataRawResultDataUserPinnedItemsNodesFilterInput>;
+};
+
+export type GithubDataRawResultDataUserPinnedItemsNodesFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  databaseId?: Maybe<IntQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+};
+
+export type GithubDataConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<GithubDataEdge>;
+  nodes: Array<GithubData>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<GithubDataGroupConnection>;
+};
+
+
+export type GithubDataConnectionDistinctArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataConnectionMaxArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataConnectionMinArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataConnectionSumArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: GithubDataFieldsEnum;
+};
+
+export type GithubDataEdge = {
+  next?: Maybe<GithubData>;
+  node: GithubData;
+  previous?: Maybe<GithubData>;
+};
+
+export type GithubDataFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'data___user___id'
+  | 'data___user___pinnedItems___nodes'
+  | 'rawResult___data___user___id';
+
+export type GithubDataGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<GithubDataEdge>;
+  nodes: Array<GithubData>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<GithubDataGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type GithubDataGroupConnectionDistinctArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataGroupConnectionMaxArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataGroupConnectionMinArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataGroupConnectionSumArgs = {
+  field: GithubDataFieldsEnum;
+};
+
+
+export type GithubDataGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: GithubDataFieldsEnum;
+};
+
+export type GithubDataFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  data?: Maybe<GithubDataDataFilterInput>;
+  rawResult?: Maybe<GithubDataRawResultFilterInput>;
+};
+
+export type GithubDataSortInput = {
+  fields?: Maybe<Array<Maybe<GithubDataFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 export type SiteInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SiteInfoQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author' | 'description' | 'title' | 'shortTitle'>> }> };
+
+export type PinnedRepositoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PinnedRepositoriesQuery = { githubData?: Maybe<{ data?: Maybe<{ user?: Maybe<(
+        Pick<GithubDataDataUser, 'id'>
+        & { pinnedItems?: Maybe<{ nodes?: Maybe<Array<Maybe<Pick<GithubDataDataUserPinnedItemsNodes, 'url' | 'name' | 'id' | 'databaseId' | 'createdAt'>>>> }> }
+      )> }> }> };

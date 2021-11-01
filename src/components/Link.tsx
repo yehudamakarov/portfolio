@@ -4,13 +4,18 @@ import { GatsbyLinkProps, Link as GatsbyLink } from "gatsby"
 
 interface CustomGatsbyLink extends Omit<GatsbyLinkProps<Record<string, unknown>>, "ref"> {
   white?: boolean
+  underline?: "none" | "hover" | "always";
 }
 
 const Link = React.forwardRef<GatsbyLink<any>, CustomGatsbyLink>(function Link(props, ref) {
-  return <MuiLink sx={{ color: props.white ? "common.white" : "text.primary" }}
-                  underline={'hover'}
-                  component={GatsbyLink}
-                  ref={ref} {...props} />
+  const { white, underline, ...rest } = props
+  return <MuiLink
+    sx={{ color: props.white ? "common.white" : "text.primary" }}
+    underline={underline ? underline : "hover"}
+    component={GatsbyLink}
+    ref={ref}
+    {...rest}
+  />
 })
 
 // const Link = function Link(props){

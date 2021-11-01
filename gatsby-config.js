@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   plugins: [
     "gatsby-plugin-top-layout",
@@ -21,6 +25,31 @@ module.exports = {
       }
     },
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        token: process.env.GITHUB_API_TOKEN,
+        variables: {},
+        graphQLQuery: `
+        query {
+          user(login: "yehudamakarov") {
+            id
+            pinnedItems(first: 10) {
+              nodes {
+                ... on Repository {
+                  id
+                  name
+                  databaseId
+                  createdAt
+                  url
+                }
+              }
+            }
+          }
+        }
+        `
+      }
+    }
   ],
   siteMetadata: {
     shortTitle: "ym",

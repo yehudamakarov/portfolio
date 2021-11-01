@@ -17,9 +17,9 @@ export const Hero: React.FC<HeroProps> = () => {
         <StaticImage
           className={css`
             width: 100vw;
-            height: 70vh;
-            ${theme.breakpoints.down("lg")}: {
-              height: 60vh;
+            height: 65vh;
+            ${theme.breakpoints.down("xl")} {
+              height: 55vh;
             }
           `}
           imgClassName={css`
@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = () => {
             height: 100%;
             object-fit: cover;
             object-position: 37% 30%;
-            ${theme.breakpoints.down("lg")}: {
+            ${theme.breakpoints.down("lg")} {
               object-position: 10% 30%;
             }
           `}
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 <Grid container spacing={isLessThanSm ? 1 : 2}>
                   {["/about", "/projects", "/blog"].map(link => (
                     <Grid key={link} item>
-                      <Link to={link} white>
+                      <Link to={link} white={true}>
                         <Typography variant={"button"} >
                           {link.substring(1)}
                         </Typography>
