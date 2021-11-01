@@ -4,8 +4,10 @@ import { Layout } from "../components/layout/Layout"
 import { MarkdownPageQuery } from "../../gatsby-graphql"
 import { Box, Container } from "@mui/material"
 
+
 export default function Template(props: PageProps<MarkdownPageQuery>) {
   const { frontmatter, html } = props.data.markdownRemark
+
   return (
     <Layout pageProps={props}>
       <Container maxWidth={"md"}>

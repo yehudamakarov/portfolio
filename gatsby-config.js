@@ -16,7 +16,6 @@ module.exports = {
         ]
       }
     },
-    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -31,6 +30,8 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages`
       }
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -42,7 +43,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 740
+              maxWidth: 820,
             }
           },
           {
@@ -63,7 +64,6 @@ module.exports = {
         ]
       }
     },
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-github-api`,
       options: {

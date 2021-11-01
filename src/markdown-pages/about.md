@@ -156,7 +156,7 @@ Here's a "line block" (note how whitespace is honored):
 
 and images can be specified like so:
 
-![quarry](src/images/quarry.jpeg "An exemplary image")
+![quarry](../../src/images/quarry.jpeg "An exemplary image")
 
 Inline math equation: $\omega = d\phi / dt$. Display
 math should get its own line like so:
