@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql, PageProps } from "gatsby"
 import { Layout } from "../components/layout/Layout"
 import { MarkdownPageQuery } from "../../gatsby-graphql"
-import { Box, Container } from "@mui/material"
+import { Box, Container, Typography } from "@mui/material"
 import rehypeReact from "rehype-react"
 import Link from "../components/Link"
 
@@ -13,10 +13,18 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
   const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
-      a: (props1, context) =>
-        <Link to={props1.href}>{props1.title}</Link>
-    }
+      a: (p) => {
+        console.log(p)
+        return <Link to={p.href}>{p.title}</Link>
+      }
+      // h3: (p) => {
+      //   console.log(p)
+      //   return <Typography variant={"h3"}>{p.}</Typography>
+      // }
+    },
   }).Compiler
+
+  const ast = renderAst(htmlAst)
 
   return (
     <Layout pageProps={props}>
@@ -52,7 +60,7 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
           }}
           // dangerouslySetInnerHTML={{__html: html}}
         >
-          {renderAst(htmlAst)}
+          {ast}
         </Box>
       </Container>
     </Layout>
