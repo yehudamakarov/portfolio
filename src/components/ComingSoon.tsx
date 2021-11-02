@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Box, Container, Fab, Grid, Typography } from "@mui/material"
+import { Box, Container, Fab, Grid, Typography, Link as MuiLink } from "@mui/material"
 import Link from "./Link"
 import { ArrowBack } from "@mui/icons-material"
 
@@ -25,6 +25,8 @@ export const ComingSoon: React.FC<ComingSoonProps> = () => {
           </Link>
         </Grid>
       </Grid>
+      <Box><MuiLink href={"/"}>link to home</MuiLink></Box>
+      <Box><Link to={"/"}>custom link to home</Link></Box>
     </Container>
   )
 }

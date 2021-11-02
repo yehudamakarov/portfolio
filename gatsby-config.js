@@ -3,6 +3,12 @@ require("dotenv").config({
 })
 
 module.exports = {
+  siteMetadata: {
+    shortTitle: "ym",
+    title: `yehudamakarov`,
+    description: `My home base on the web. For what it is worth.`,
+    author: `Yehuda Moshe Makarov`
+  },
   plugins: [
     "gatsby-plugin-top-layout",
     "gatsby-plugin-react-helmet",
@@ -91,11 +97,5 @@ module.exports = {
         `
       }
     }
-  ],
-  siteMetadata: {
-    shortTitle: "ym",
-    title: `yehudamakarov`,
-    description: `My home base on the web. For what it is worth.`,
-    author: `Yehuda Moshe Makarov`
-  }
+  ]
 }

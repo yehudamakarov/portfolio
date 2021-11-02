@@ -10,7 +10,9 @@ interface HomeButtonProps {
 }
 
 function getCurrentPageFromLocationCapitalized(location: WindowLocation<WindowLocation["state"]>) {
-  const page = location.pathname === "/" ? "home" : location.pathname.slice(1)
+  console.log(location)
+  const justCharacters = location.pathname[-1] === "/" ? location.pathname.slice(1, -1) : location.pathname.slice(1)
+  const page = location.pathname === "/" ? "home" : justCharacters
   return page.charAt(0).toUpperCase() + page.slice(1)
 }
 
