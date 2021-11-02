@@ -3750,6 +3750,6 @@ export type MarkdownPageQueryVariables = Exact<{
 
 
 export type MarkdownPageQuery = { markdownRemark?: Maybe<(
-    Pick<MarkdownRemark, 'id' | 'html'>
+    Pick<MarkdownRemark, 'id' | 'htmlAst' | 'html'>
     & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title' | 'slug'>> }
   )> };
