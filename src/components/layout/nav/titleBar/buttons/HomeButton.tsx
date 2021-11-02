@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Grid, Theme, Typography, useMediaQuery } from "@mui/material"
 import { SxProps } from "@mui/system"
-import Link from "../../../../Link"
+import { Link } from "../../../../Link"
 import { SiteInfoContext } from "../../../Layout"
 import { WindowLocation } from "@reach/router"
 
@@ -10,10 +10,11 @@ interface HomeButtonProps {
 }
 
 function getCurrentPageFromLocationCapitalized(location: WindowLocation<WindowLocation["state"]>) {
-  console.log(location)
-  const justCharacters = location.pathname[-1] === "/" ? location.pathname.slice(1, -1) : location.pathname.slice(1)
-  const page = location.pathname === "/" ? "home" : justCharacters
-  return page.charAt(0).toUpperCase() + page.slice(1)
+  const onHomePage = location.pathname === "/"
+  const pageName = onHomePage ? "home" : location.pathname
+  const withoutSlash = pageName.replace(/\/+/gm, "")
+  // capitalize
+  return withoutSlash.charAt(0).toUpperCase() + withoutSlash.slice(1)
 }
 
 export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
@@ -30,11 +31,11 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
           sx={sxProps}
         >
           <Grid item>
-            <Link to={"/"}>
-              <Typography sx={{ display: "inline-block" }} variant="h6">
-                {isSmall ? shortTitle : title}
-              </Typography>
-            </Link>
+
+            <Typography sx={{ display: "inline-block" }} variant="h6">
+              <Link to={"/"} sx={{ color: "text.primary" }}>{isSmall ? shortTitle : title}</Link>
+            </Typography>
+
           </Grid>
           <Grid item>
             <Typography

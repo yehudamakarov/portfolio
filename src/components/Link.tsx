@@ -1,17 +1,19 @@
 import * as React from "react"
 import MuiLink from "@mui/material/Link"
 import { GatsbyLinkProps, Link as GatsbyLink } from "gatsby"
+import { SxProps } from "@mui/system"
+import { Theme } from "@mui/material"
 
 interface CustomGatsbyLink extends Omit<GatsbyLinkProps<Record<string, unknown>>, "ref"> {
-  white?: boolean
+  sx?: SxProps<Theme>
   underline?: "none" | "hover" | "always";
   external?: boolean
 }
 
-const Link = React.forwardRef<GatsbyLink<any>, CustomGatsbyLink>(function Link(props, ref) {
-  const { white, underline, external, to, ...rest } = props
+export const Link = React.forwardRef<GatsbyLink<any>, CustomGatsbyLink>(function Link(props, ref) {
+  const { sx, underline, external, to, ...rest } = props
   return <MuiLink
-    sx={{ [props.white ? "color" : ""]: "common.white" }}
+    sx={{ ...sx }}
     underline={underline ? underline : "hover"}
     component={external ? undefined : GatsbyLink}
     ref={ref}
@@ -20,5 +22,3 @@ const Link = React.forwardRef<GatsbyLink<any>, CustomGatsbyLink>(function Link(p
     {...rest}
   />
 })
-
-export default Link

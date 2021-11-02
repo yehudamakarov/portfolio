@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Box, Button, Container, Grid, Theme, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { StaticImage } from "gatsby-plugin-image"
-import Link from "../Link"
+import { Link } from "../Link"
 import { Assignment } from "@mui/icons-material"
 import { ClassNames } from "@emotion/react"
 
@@ -18,6 +18,7 @@ export const Hero: React.FC<HeroProps> = () => {
           className={css`
             width: 100vw;
             height: 65vh;
+
             ${theme.breakpoints.down("xl")} {
               height: 55vh;
             }
@@ -27,6 +28,7 @@ export const Hero: React.FC<HeroProps> = () => {
             height: 100%;
             object-fit: cover;
             object-position: 37% 30%;
+
             ${theme.breakpoints.down("lg")} {
               object-position: 10% 30%;
             }
@@ -72,8 +74,8 @@ export const Hero: React.FC<HeroProps> = () => {
                 <Grid container spacing={isLessThanSm ? 1 : 2}>
                   {["/about", "/projects", "/blog"].map(link => (
                     <Grid key={link} item>
-                      <Link to={link} white={true}>
-                        <Typography variant={"button"} >
+                      <Link to={link} sx={{ color: "common.white" }}>
+                        <Typography variant={"button"}>
                           {link.substring(1)}
                         </Typography>
                       </Link>
@@ -81,7 +83,7 @@ export const Hero: React.FC<HeroProps> = () => {
                   ))}
                 </Grid>
               </Box>
-              <Button size={"small"} sx={{color: 'common.white'}} endIcon={<Assignment />}>Resume</Button>
+              <Button size={"small"} sx={{ color: "common.white" }} endIcon={<Assignment />}>Resume</Button>
             </Toolbar>
           </Box>
         </Container>
