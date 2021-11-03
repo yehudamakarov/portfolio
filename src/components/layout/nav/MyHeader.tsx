@@ -1,5 +1,5 @@
 import * as React from "react"
-import { AppBar, Container, Toolbar, useTheme } from "@mui/material"
+import { AppBar, Box, Container, Toolbar, useTheme } from "@mui/material"
 import { HomeButton } from "./titleBar/buttons/HomeButton"
 import DarkModeButton from "./titleBar/buttons/DarkModeButton"
 import { GithubHomeButton } from "./titleBar/buttons/GithubHomeButton"
@@ -7,12 +7,12 @@ import { GithubHomeButton } from "./titleBar/buttons/GithubHomeButton"
 export const MyHeader: React.FC<{}> = () => {
   const theme = useTheme()
   return (
-    <div>
+    <Box sx={{...theme.mixins.toolbar}}>
       <AppBar
         color={theme.palette.mode === "light" ? "transparent" : "primary"}
         elevation={1}
         variant={"elevation"}
-        position="sticky"
+        position="fixed"
       >
         <Container maxWidth={"lg"}>
           <Toolbar disableGutters>
@@ -22,6 +22,6 @@ export const MyHeader: React.FC<{}> = () => {
           </Toolbar>
         </Container>
       </AppBar>
-    </div>
+    </Box>
   )
 }
