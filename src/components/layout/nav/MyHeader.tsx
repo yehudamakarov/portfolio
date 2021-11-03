@@ -9,7 +9,7 @@ export const MyHeader: React.FC<{}> = () => {
   return (
     <Box sx={{...theme.mixins.toolbar}}>
       <AppBar
-        color={theme.palette.mode === "light" ? "transparent" : "primary"}
+        color={theme.palette.mode === "light" ? "default" : "primary"}
         elevation={1}
         variant={"elevation"}
         position="fixed"
