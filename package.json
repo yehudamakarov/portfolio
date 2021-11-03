@@ -1,59 +1,46 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "yehuda-makarovs-site",
+  "version": "2.0",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@apollo/client": "^3.3.21",
-    "@material-ui/core": "^4.12.0",
-    "@material-ui/icons": "^4.11.2",
-    "@types/react-helmet": "^6.1.1",
-    "gatsby": "^3.9.0",
-    "gatsby-plugin-gatsby-cloud": "^2.9.0",
-    "gatsby-plugin-image": "^1.9.0",
-    "gatsby-plugin-manifest": "^3.9.0",
-    "gatsby-plugin-offline": "^4.9.0",
-    "gatsby-plugin-react-helmet": "^4.9.0",
-    "gatsby-plugin-sharp": "^3.9.0",
-    "gatsby-source-filesystem": "^3.9.0",
+    "@emotion/cache": "^11.5.0",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.0.5",
+    "@mui/material": "latest",
+    "@mui/utils": "^5.0.1",
+    "@types/rehype-react": "^6.0.0",
+    "gatsby": "latest",
+    "gatsby-plugin-graphql-codegen": "^3.0.0",
+    "gatsby-plugin-image": "^2.0.0",
+    "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-sharp": "^4.0.1",
+    "gatsby-remark-autolink-headers": "^5.0.0",
+    "gatsby-remark-copy-linked-files": "^5.0.0",
+    "gatsby-remark-images": "^6.0.0",
+    "gatsby-remark-prismjs": "^6.0.0",
+    "gatsby-remark-responsive-iframe": "^5.0.0",
+    "gatsby-remark-smartypants": "^5.0.0",
+    "gatsby-source-filesystem": "^4.0.0",
     "gatsby-source-github-api": "^1.0.0",
-    "gatsby-theme-material-ui": "^2.0.1",
-    "gatsby-transformer-sharp": "^3.9.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-helmet": "^6.1.0"
+    "gatsby-transformer-remark": "^5.0.0",
+    "gatsby-transformer-sharp": "^4.0.0",
+    "prismjs": "^1.25.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-helmet": "latest",
+    "rehype-react": "^7.0.3",
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "develop": "gatsby develop",
+    "debug": "node --inspect ./node_modules/.bin/gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.21.6",
-    "@graphql-codegen/introspection": "^1.18.2",
-    "@graphql-codegen/typescript": "^1.22.4",
-    "@graphql-codegen/typescript-operations": "^1.18.3",
-    "@graphql-codegen/typescript-react-apollo": "^2.3.0",
-    "gatsby-plugin-ts-config": "^1.1.5",
-    "prettier": "2.2.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "ggl-types": "graphql-codegen --config codegen.yml",
-    "ggl-types:watch": "graphql-codegen --config codegen.yml -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "@graphql-codegen/typescript": "^2.2.4"
   }
 }
