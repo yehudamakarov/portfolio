@@ -29,8 +29,8 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
 
   function getTypography(p, header: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
     const { id, ...rest } = p
-    rest.children.unshift(<span className={"anchor-offset"} id={id} />)
-    return <Typography sx={{ mt: header === "h1" ? 0 : 2 }} variant={header} {...rest} />
+    rest.children.unshift(<span key={id} className={"anchor-offset"} id={id} />)
+    return <Typography sx={{ mt: header === "h1" ? 0 : 2, color: "text.secondary" }} variant={header} {...rest} />
   }
 
   const renderAst = new rehypeReact({
@@ -47,7 +47,7 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
       thead: (p) => <TableHead {...p} />,
       th: (p) => <TableCell {...p} sx={(theme) => ({
         ...(theme.typography.subtitle1),
-        bgcolor: theme.palette.mode === "light" ? "grey.100" : "grey.700"
+        bgcolor: theme.palette.mode === "light" ? "grey.300" : "grey.800"
       })} />,
       tbody: (p) => <TableBody {...p} />,
       tr: (p) => <TableRow {...p} />,
@@ -109,7 +109,8 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
               pr: 3,
               pl: 2,
               ml: 4,
-              py: 1
+              py: 1,
+              marginInline: 2
             },
             "& ol, & li": (theme) => ({
               ...(theme.typography[typographySelectionForBody])
