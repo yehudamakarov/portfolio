@@ -3,6 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline"
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles"
 import { useDarkMode } from "../../src/utils/useDarkMode"
 import MyTopHelmet from "./helmet/MyTopHelmet"
+import { useEffect, useState } from "react"
 
 export interface DarkModeContextType {
   darkModeEnabled: boolean
@@ -17,6 +18,8 @@ export const DarkModeContext = React.createContext<DarkModeContextType>({
 
 export default function TopLayout(props) {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode()
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => setIsClient(true), [setIsClient, darkModeEnabled])
 
   const getOptions = (darkModeEnabled: boolean): ThemeOptions => {
     const textWhite = "#d9d6d6"
@@ -87,7 +90,7 @@ export default function TopLayout(props) {
   const theme = React.useMemo(() => createTheme(getOptions(darkModeEnabled)), [darkModeEnabled, setDarkModeEnabled])
 
   return (
-    <React.Fragment>
+    <React.Fragment key={String(isClient)}>
       <MyTopHelmet />
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
