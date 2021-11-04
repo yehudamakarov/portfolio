@@ -33,13 +33,13 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
           <Grid item>
 
             <Typography sx={{ display: "inline-block" }} variant="h6">
-              <Link to={"/"} sx={{ color: "text.primary" }}>{isSmall ? shortTitle : title}</Link>
+              <Link to={"/"} sx={{ color: "common.white" }}>{isSmall ? shortTitle : title}</Link>
             </Typography>
 
           </Grid>
           <Grid item>
             <Typography
-              sx={{ display: "inline-block" }}
+              sx={{ display: "inline-block", color: "common.white" }}
               variant={"h6"}
             >
               |
@@ -47,7 +47,7 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
           </Grid>
           <Grid sx={{ position: "relative" }} item>
             <Typography
-              sx={{ display: "inline-block" }}
+              sx={{ display: "inline-block", color: "common.white" }}
               variant={"subtitle2"}
             >
               {currentPage}

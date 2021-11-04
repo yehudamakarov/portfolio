@@ -4,13 +4,13 @@ import { HomeButton } from "./titleBar/buttons/HomeButton"
 import DarkModeButton from "./titleBar/buttons/DarkModeButton"
 import { GithubHomeButton } from "./titleBar/buttons/GithubHomeButton"
 
-export const MyHeader: React.FC<{}> = () => {
+export const MyHeader = () => {
   const theme = useTheme()
-  console.log("theme: ", theme)
   return (
     <Box sx={{ ...theme.mixins.toolbar }}>
       <AppBar
-        color={theme.palette.mode === "light" ? "default" : "primary"}
+        color={"secondary"}
+        enableColorOnDark={true}
         elevation={1}
         variant={"elevation"}
         position="fixed"
@@ -19,7 +19,7 @@ export const MyHeader: React.FC<{}> = () => {
           <Toolbar disableGutters>
             <HomeButton sxProps={{ flexGrow: 1 }} />
             <DarkModeButton />
-            <GithubHomeButton sxProps={{ marginLeft: 1, color: "text.primary" }} />
+            <GithubHomeButton sxProps={{ marginLeft: 1, color: "common.white" }} />
           </Toolbar>
         </Container>
       </AppBar>

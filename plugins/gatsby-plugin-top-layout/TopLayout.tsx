@@ -19,10 +19,37 @@ export default function TopLayout(props) {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode()
 
   const getOptions = (darkModeEnabled: boolean): ThemeOptions => {
-    console.log("darkModeEnabled: ", darkModeEnabled )
+    const textWhite = "#d9d6d6"
     return ({
       palette: {
-        ...(darkModeEnabled ? { mode: "dark" } : { mode: "light" })
+        ...(darkModeEnabled
+          ? {
+            mode: "dark",
+            secondary: {
+              main: "#121520"
+            },
+            background: {
+              default: "#0b0d14",
+              paper: "#121215"
+            },
+            text: {
+              primary: "#bdbdc0",
+              secondary: textWhite
+            },
+            common: {
+              white: textWhite
+            }
+          }
+          : {
+            mode: "light",
+            secondary: {
+              main: "#171b29"
+            },
+            text: {
+              primary: "#1a1a1c",
+              secondary: "#181819"
+            }
+          })
       },
       typography: {
         h1: {
