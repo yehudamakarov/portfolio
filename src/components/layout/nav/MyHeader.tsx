@@ -6,8 +6,9 @@ import { GithubHomeButton } from "./titleBar/buttons/GithubHomeButton"
 
 export const MyHeader: React.FC<{}> = () => {
   const theme = useTheme()
+  console.log("theme: ", theme)
   return (
-    <Box sx={{...theme.mixins.toolbar}}>
+    <Box sx={{ ...theme.mixins.toolbar }}>
       <AppBar
         color={theme.palette.mode === "light" ? "default" : "primary"}
         elevation={1}
