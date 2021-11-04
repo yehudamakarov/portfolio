@@ -29,7 +29,7 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
 
   function getTypography(p, header: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
     const { id, ...rest } = p
-    rest.children.unshift(<span className={"anchor-offset"} id={id} />)
+    rest.children.unshift(<span key={id} className={"anchor-offset"} id={id} />)
     return <Typography sx={{ mt: header === "h1" ? 0 : 2 }} variant={header} {...rest} />
   }
 

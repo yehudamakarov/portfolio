@@ -25,9 +25,6 @@ export const ComingSoon: React.FC<ComingSoonProps> = () => {
           </Link>
         </Grid>
       </Grid>
-      <Box><MuiLink href={"/"}>link to home</MuiLink></Box>
-      <Box><Link to={"/"}>custom link to home</Link></Box>
-      <Box><table><th>header</th><td>data</td></table></Box>
     </Container>
   )
 }
