@@ -12,7 +12,9 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography
+  Theme,
+  Typography,
+  useMediaQuery
 } from "@mui/material"
 import rehypeReact from "rehype-react"
 import { Link } from "../components/Link"
@@ -20,6 +22,8 @@ import { Link } from "../components/Link"
 const typographySelectionForBody = "body1" as const
 
 export default function Template(props: PageProps<MarkdownPageQuery>) {
+  const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"))
+  console.log(mobile)
   // noinspection JSUnusedLocalSymbols
   const { frontmatter, htmlAst } = props.data.markdownRemark
 
@@ -98,11 +102,8 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
             "& h1, & h2, & h3, & h4, & h5, & h6": {
               "& .anchor": {
                 // To prevent the link to get the focus.
-                display: "none"
-                // display: "block",
-                // position: "relative",
-                // top: "-250px",
-                // visibility: "hidden"
+                display: "none",
+                top: mobile ? "-5px" : 0
               },
               "& a:not(.anchor):hover": {
                 color: "currentColor",
@@ -111,14 +112,14 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
               },
               "&:hover .anchor": {
                 display: "inline-block",
-                padding: "0 8px",
+                padding: mobile ? "0 2px" : "0 4px",
                 color: "text.secondary",
                 "&:hover": {
                   color: "text.primary"
                 },
                 "& svg": {
-                  width: "0.7em",
-                  height: "0.7em",
+                  width: mobile ? "0.5em" : "0.7em",
+                  height: mobile ? "0.5em" : "0.7em",
                   fill: "currentColor"
                 }
               }
@@ -139,9 +140,6 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
             "& .footnotes": (theme) => ({
               ...(theme.typography[typographySelectionForBody])
             })
-            // "& li[id^=\"fn-\"], & sup[id^=\"fnref-\"]": {
-            //   position: "relative"
-            // }
           }}
         >
           {renderAst(htmlAst)}
