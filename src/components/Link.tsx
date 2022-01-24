@@ -10,6 +10,7 @@ interface CustomGatsbyLink extends Omit<GatsbyLinkProps<Record<string, unknown>>
   external?: boolean
 }
 
+
 export const Link = React.forwardRef<GatsbyLink<any>, CustomGatsbyLink>(function Link(props, ref) {
   const { sx, underline, external, to, ...rest } = props
   return <MuiLink

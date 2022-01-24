@@ -20,19 +20,21 @@ import { Link } from "../components/Link"
 const typographySelectionForBody = "body1" as const
 
 export default function Template(props: PageProps<MarkdownPageQuery>) {
-  const { frontmatter, htmlAst, html } = props.data.markdownRemark
+  // noinspection JSUnusedLocalSymbols
+  const { frontmatter, htmlAst } = props.data.markdownRemark
 
-  function shouldMakeMuiLinkComponent(p) {
+  const shouldMakeMuiLinkComponent = p => {
     const { className } = p
     return !(className === "anchor before" || className === "gatsby-resp-image-link")
   }
 
-  function getTypography(p, header: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
+  const getTypography = (p, header: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") => {
     const { id, ...rest } = p
     rest.children.unshift(<span key={id} className={"anchor-offset"} id={id} />)
     return <Typography sx={{ mt: header === "h1" ? 0 : 2, color: "text.secondary" }} variant={header} {...rest} />
   }
 
+  // noinspection JSPotentiallyInvalidConstructorUsage
   const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
@@ -57,7 +59,26 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
       h3: (p) => getTypography(p, "h3"),
       h4: (p) => getTypography(p, "h4"),
       h5: (p) => getTypography(p, "h5"),
-      h6: (p) => getTypography(p, "h6")
+      h6: (p) => getTypography(p, "h6"),
+      sup: (p) => {
+        const { id, ...rest } = p
+        if (!(id as string)?.startsWith("fnref")) {
+          return <sup {...p} />
+        } else {
+          rest.children.unshift(<span key={id} className={"anchor-offset"} id={id} />)
+          return <sup style={{ position: "relative" }} {...rest} />
+        }
+
+      },
+      li: (p) => {
+        const { id, ...rest } = p
+        if (!(id as string)?.startsWith("fn")) {
+          return <li {...p} />
+        } else {
+          rest.children.unshift(<span key={id} className={"anchor-offset"} id={id} />)
+          return <li style={{ position: "relative" }} {...rest} />
+        }
+      }
     }
   }).Compiler
 
@@ -115,11 +136,13 @@ export default function Template(props: PageProps<MarkdownPageQuery>) {
             "& ol, & li": (theme) => ({
               ...(theme.typography[typographySelectionForBody])
             }),
-            ".footnotes": (theme) => ({
+            "& .footnotes": (theme) => ({
               ...(theme.typography[typographySelectionForBody])
             })
+            // "& li[id^=\"fn-\"], & sup[id^=\"fnref-\"]": {
+            //   position: "relative"
+            // }
           }}
-          // dangerouslySetInnerHTML={{__html: html}}
         >
           {renderAst(htmlAst)}
         </Box>

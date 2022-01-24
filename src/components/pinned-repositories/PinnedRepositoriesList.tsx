@@ -17,7 +17,7 @@ export const PinnedRepositoriesList: React.FC<PinnedRepositoriesListProps> = ({ 
     <Box>
       {!buttonOverlapsPaper
         ? (
-          <Container sx={{minHeight: (theme)=> theme.spacing(30)}} >
+          <Container sx={{ minHeight: (theme) => theme.spacing(30) }}>
             <Grid
               container
               direction="row"
