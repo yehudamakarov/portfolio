@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Grid, Theme, Typography, useMediaQuery } from "@mui/material"
 import { SxProps } from "@mui/system"
-import { Link } from "../../../../Link"
+import { MyLink } from "../../../../MyLink"
 import { SiteInfoContext } from "../../../Layout"
 import { getCurrentPageFromLocationCapitalized } from "../../../../../utils/getCurrentPageFromLocationCapitalized"
 
@@ -23,11 +23,9 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {
           sx={sxProps}
         >
           <Grid item>
-
             <Typography sx={{ display: "inline-block" }} variant="h6">
-              <Link to={"/"} sx={{ color: "common.white" }}>{isSmall ? shortTitle : title}</Link>
+              <MyLink to={"/"} sx={{ color: "common.white" }}>{isSmall ? shortTitle : title}</MyLink>
             </Typography>
-
           </Grid>
           <Grid item>
             <Typography

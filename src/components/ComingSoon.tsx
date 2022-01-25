@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Box, Container, Fab, Grid, Typography, Link as MuiLink } from "@mui/material"
-import { Link } from "./Link"
+import { Box, Container, Fab, Grid, Typography} from "@mui/material"
+import { MyLink } from "./MyLink"
 import { ArrowBack } from "@mui/icons-material"
 
 interface ComingSoonProps {
@@ -17,12 +17,12 @@ export const ComingSoon: React.FC<ComingSoonProps> = () => {
       <Grid container sx={{ display: "flex" }}>
         <Grid item sx={{ flexGrow: 1 }} />
         <Grid item>
-          <Link to={"/"} underline={"none"}>
+          <MyLink to={"/"} underline={"none"}>
             <Fab color={"primary"} variant={"extended"}>
               <ArrowBack sx={{ mr: 1 }} />
               Back
             </Fab>
-          </Link>
+          </MyLink>
         </Grid>
       </Grid>
     </Container>

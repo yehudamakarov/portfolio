@@ -1,10 +1,10 @@
 ---
-slug: "/about"
+slug: "example"
 date: "2021-10-31"
-title: "About"
+title: "Example"
 ---
 
-# About Me...
+# Example...
 
 Paragraphs are separated by a blank line.
 
@@ -125,4 +125,4 @@ Here's a definition list:
 
 and images can be specified like so:
 
-![quarry](../../src/images/quarry.jpeg "An exemplary image")
+![quarry](../../../src/images/quarry.jpeg "An exemplary image")

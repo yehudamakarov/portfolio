@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Box, Button, Container, Grid, Theme, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "../Link"
+import { MyLink } from "../MyLink"
 import { Assignment } from "@mui/icons-material"
 import { ClassNames } from "@emotion/react"
 
@@ -63,8 +63,7 @@ export const Hero: React.FC<HeroProps> = () => {
             }
           }}>
             <Typography sx={{ color: "common.white" }} variant={"body2"}>
-              welcome to my site. I'm a software craftsman. feel free to browse
-              around, or reach out.
+              Welcome to my site. I'm a software craftsman. Feel free to reach out, or browse around.
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
@@ -74,11 +73,11 @@ export const Hero: React.FC<HeroProps> = () => {
                 <Grid container spacing={isLessThanSm ? 1 : 2}>
                   {["/about", "/projects", "/blog"].map(link => (
                     <Grid key={link} item>
-                      <Link to={link} sx={{ color: "common.white" }}>
+                      <MyLink to={link} sx={{ color: "common.white" }}>
                         <Typography variant={"button"}>
                           {link.substring(1)}
                         </Typography>
-                      </Link>
+                      </MyLink>
                     </Grid>
                   ))}
                 </Grid>
