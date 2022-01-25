@@ -4,7 +4,7 @@ date: "2021-10-31"
 title: "Example"
 ---
 
-# Example...
+## Example...
 
 Paragraphs are separated by a blank line.
 
@@ -64,7 +64,7 @@ delimited block for Pandoc to syntax highlight it:
 
 ~~~python
 import time
-# Quick, count to ten!
+## Quick, count to ten!
 for i in range(10):
     # (but not *too* quick)
     time.sleep(0.5)

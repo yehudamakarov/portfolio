@@ -4,8 +4,6 @@ date: "2021-10-31"
 title: "About"
 ---
 
-# About
-
 ## The Gist
 Growing up, I was interested in psychology, medicine, Lego and music. Soon, I became more interested in what makes people tick. Then I started learning about how to push boundaries to find reasons and inner mechanisms. Eventually I began to discover the elaborate ways we can work with and amongst  ourselves to build almost anything. And then I found out about software engineering. 
 
