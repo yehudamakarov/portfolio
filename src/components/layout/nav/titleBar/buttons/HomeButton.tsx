@@ -3,7 +3,7 @@ import { Grid, Theme, Typography, useMediaQuery } from "@mui/material"
 import { SxProps } from "@mui/system"
 import { Link } from "../../../../Link"
 import { SiteInfoContext } from "../../../Layout"
-import { getCurrentPageFromLocationCapitalized } from "../../../../../utils/GetCurrentPageFromLocationCapitalized"
+import { getCurrentPageFromLocationCapitalized } from "../../../../../utils/getCurrentPageFromLocationCapitalized"
 
 interface HomeButtonProps {
   sxProps: SxProps<Theme>
