@@ -3,18 +3,10 @@ import { Grid, Theme, Typography, useMediaQuery } from "@mui/material"
 import { SxProps } from "@mui/system"
 import { Link } from "../../../../Link"
 import { SiteInfoContext } from "../../../Layout"
-import { WindowLocation } from "@reach/router"
+import { getCurrentPageFromLocationCapitalized } from "../../../../../utils/GetCurrentPageFromLocationCapitalized"
 
 interface HomeButtonProps {
   sxProps: SxProps<Theme>
-}
-
-function getCurrentPageFromLocationCapitalized(location: WindowLocation<WindowLocation["state"]>) {
-  const onHomePage = location.pathname === "/"
-  const pageName = onHomePage ? "home" : location.pathname
-  const withoutSlash = pageName.replace(/\/+/gm, "")
-  // capitalize
-  return withoutSlash.charAt(0).toUpperCase() + withoutSlash.slice(1)
 }
 
 export const HomeButton: React.FC<HomeButtonProps> = ({ sxProps }) => {

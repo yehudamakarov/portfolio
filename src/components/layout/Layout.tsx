@@ -4,6 +4,7 @@ import { MyFooter } from "./nav/MyFooter"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
 import { SiteInfoQuery } from "../../../gatsby-graphql"
 import { SeoHelmetConcern } from "../seo/SeoHelmetConcern"
+import { getCurrentPageFromLocationCapitalized } from "../../utils/getCurrentPageFromLocationCapitalized"
 
 interface LayoutProps {
   pageProps: PageProps
@@ -32,9 +33,11 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     `
   )
 
+  const pageName = getCurrentPageFromLocationCapitalized(props.pageProps.location)
+
   return (
     <SiteInfoContext.Provider value={{ siteInfoQuery, layoutProps: props }}>
-      <SeoHelmetConcern siteInfoQuery={siteInfoQuery}/>
+      <SeoHelmetConcern siteInfoQuery={siteInfoQuery} pageName={pageName}/>
       <MyHeader />
       <main>
         {props.children}

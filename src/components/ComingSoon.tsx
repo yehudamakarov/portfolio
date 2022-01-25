@@ -18,7 +18,7 @@ export const ComingSoon: React.FC<ComingSoonProps> = () => {
         <Grid item sx={{ flexGrow: 1 }} />
         <Grid item>
           <Link to={"/"} underline={"none"}>
-            <Fab size={"small"} color={"primary"} variant={"extended"}>
+            <Fab color={"primary"} variant={"extended"}>
               <ArrowBack sx={{ mr: 1 }} />
               Back
             </Fab>

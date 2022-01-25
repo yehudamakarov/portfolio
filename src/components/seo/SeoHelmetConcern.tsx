@@ -7,18 +7,20 @@ interface SeoProps {
   lang?: "en"
   meta?: HelmetProps["meta"]
   siteInfoQuery: SiteInfoQuery
+  pageName: string
 }
 
 export const SeoHelmetConcern: React.FC<SeoProps> = ({
                                                        pageDescription,
                                                        lang,
                                                        meta = [],
-                                                       siteInfoQuery = {}
+                                                       siteInfoQuery = {},
+                                                       pageName
                                                      }) => {
   const metaDescription =
     pageDescription || siteInfoQuery.site.siteMetadata.description
   const defaultTitle = siteInfoQuery.site.siteMetadata?.title
-  const titleTemplate = defaultTitle ? `%s | ${defaultTitle}` : null
+  const titleTemplate = defaultTitle && pageName ? `%s | ${pageName}` : null
   const mergedMeta = meta.concat([
     {
       name: `description`,
