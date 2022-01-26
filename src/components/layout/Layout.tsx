@@ -8,14 +8,10 @@ import { getCurrentPageFromLocationCapitalized } from "../../utils/getCurrentPag
 
 interface LayoutProps {
   pageProps: PageProps
+  pageDescription?: string
 }
 
-interface SiteInfoContextType {
-  layoutProps?: LayoutProps
-  siteInfoQuery?: SiteInfoQuery
-}
-
-export const SiteInfoContext = React.createContext<SiteInfoContextType>({})
+export const PageNameContext = React.createContext<string>("")
 
 export const Layout: React.FC<LayoutProps> = (props) => {
   const siteInfoQuery = useStaticQuery<SiteInfoQuery>(
@@ -34,15 +30,21 @@ export const Layout: React.FC<LayoutProps> = (props) => {
   )
 
   const pageName = getCurrentPageFromLocationCapitalized(props.pageProps.location)
+  const { pageDescription } = props
 
   return (
-    <SiteInfoContext.Provider value={{ siteInfoQuery, layoutProps: props }}>
-      <SeoHelmetConcern siteInfoQuery={siteInfoQuery} pageName={pageName}/>
+    <PageNameContext.Provider value={pageName}>
+      <SeoHelmetConcern
+        pageDescription={pageDescription ? pageDescription : siteInfoQuery.site.siteMetadata.description}
+        pageName={pageName}
+        defaultTitle={siteInfoQuery.site.siteMetadata.title}
+        author={siteInfoQuery.site.siteMetadata.author}
+      />
       <MyHeader />
       <main>
         {props.children}
       </main>
       <MyFooter />
-    </SiteInfoContext.Provider>
+    </PageNameContext.Provider>
   )
 }
