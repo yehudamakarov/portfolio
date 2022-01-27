@@ -1,9 +1,10 @@
 import GitHubIcon from "@mui/icons-material/GitHub"
 import YouTubeIcon from "@mui/icons-material/YouTube"
+import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import { IconButton } from "@mui/material"
 import * as React from "react"
 
-export const SocialIcon = ({ type }: { type: "github" | "youtube" }) => {
+export const SocialIcon = ({ type }: { type: "github" | "youtube" | "linkedin" }) => {
   let link
   let icon
   switch (type) {
@@ -14,6 +15,10 @@ export const SocialIcon = ({ type }: { type: "github" | "youtube" }) => {
     case "youtube":
       link = "https://www.youtube.com/channel/UCwxQAOaKZ3FREWBoyiStN5g"
       icon = <YouTubeIcon fontSize={"small"} />
+      break
+    case "linkedin":
+      link = "https://www.linkedin.com/in/yehudamakarov/"
+      icon = <LinkedInIcon fontSize={"small"} />
       break
 
   }
