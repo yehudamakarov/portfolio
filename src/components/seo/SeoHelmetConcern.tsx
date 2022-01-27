@@ -1,30 +1,28 @@
 import * as React from "react"
 import { Helmet, HelmetProps } from "react-helmet"
-import { SiteInfoQuery } from "../../../gatsby-graphql"
 
 interface SeoProps {
   pageDescription?: string
+  defaultTitle?: string
   lang?: "en"
   meta?: HelmetProps["meta"]
-  siteInfoQuery: SiteInfoQuery
-  pageName: string
+  pageName: string,
+  author?: string
 }
 
 export const SeoHelmetConcern: React.FC<SeoProps> = ({
                                                        pageDescription,
-                                                       lang,
+                                                       defaultTitle,
+                                                       lang = "",
                                                        meta = [],
-                                                       siteInfoQuery = {},
-                                                       pageName
+                                                       pageName,
+                                                       author = ""
                                                      }) => {
-  const metaDescription =
-    pageDescription || siteInfoQuery.site.siteMetadata.description
-  const defaultTitle = siteInfoQuery.site.siteMetadata?.title
   const titleTemplate = defaultTitle && pageName ? `%s | ${pageName}` : null
   const mergedMeta = meta.concat([
     {
       name: `description`,
-      content: metaDescription
+      content: pageDescription
     },
     {
       property: `og:title`,
@@ -32,7 +30,7 @@ export const SeoHelmetConcern: React.FC<SeoProps> = ({
     },
     {
       property: `og:description`,
-      content: metaDescription
+      content: pageDescription
     },
     {
       property: `og:type`,
@@ -44,7 +42,7 @@ export const SeoHelmetConcern: React.FC<SeoProps> = ({
     },
     {
       name: `twitter:creator`,
-      content: siteInfoQuery.site.siteMetadata?.author || ``
+      content: author
     },
     {
       name: `twitter:title`,
@@ -52,7 +50,7 @@ export const SeoHelmetConcern: React.FC<SeoProps> = ({
     },
     {
       name: `twitter:description`,
-      content: metaDescription
+      content: pageDescription
     }
   ])
 

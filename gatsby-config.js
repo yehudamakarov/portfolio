@@ -7,7 +7,7 @@ module.exports = {
     shortTitle: "ym",
     title: `yehudamakarov`,
     description: `My home base on the web. For what it is worth.`,
-    author: `Yehuda Moshe Makarov`
+    author: `Yehuda Makarov`
   },
   plugins: [
     {
@@ -48,8 +48,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/markdown-pages`
+        name: `articles`,
+        path: `${__dirname}/src/articles`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/src/projects`
       }
     },
     `gatsby-plugin-image`,
