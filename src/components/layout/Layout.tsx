@@ -9,6 +9,7 @@ import { getCurrentPageFromLocationCapitalized } from "../../utils/getCurrentPag
 interface LayoutProps {
   pageProps: PageProps
   pageDescription?: string
+  editInGithubLink?: string
 }
 
 export const PageNameContext = React.createContext<string>("")
@@ -44,7 +45,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
       <main>
         {props.children}
       </main>
-      <MyFooter />
+      <MyFooter renderBackHome={pageName !== "Home"} editInGithubLink={props.editInGithubLink} />
     </PageNameContext.Provider>
   )
 }

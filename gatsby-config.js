@@ -7,7 +7,8 @@ module.exports = {
     shortTitle: "ym",
     title: `yehudamakarov`,
     description: `My home base on the web. For what it is worth.`,
-    author: `Yehuda Makarov`
+    author: `Yehuda Makarov`,
+    repository: "https://github.com/yehudamakarov/portfolio"
   },
   plugins: [
     {
@@ -23,8 +24,8 @@ module.exports = {
         // An optional attribute which provides support for CORS check.
         // If you do not provide a crossOrigin option, it will skip CORS for manifest.
         // Any invalid keyword or empty string defaults to `anonymous`
-        crossOrigin: `use-credentials`,
-      },
+        crossOrigin: `use-credentials`
+      }
     },
     "gatsby-plugin-top-layout",
     "gatsby-plugin-react-helmet",
