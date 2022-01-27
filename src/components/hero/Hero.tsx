@@ -1,10 +1,10 @@
 import * as React from "react"
-import { Box, Button, Container, Grid, Theme, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material"
+import { Box, Container, Grid, Theme, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { StaticImage } from "gatsby-plugin-image"
 import { MyLink } from "../MyLink"
-import { Assignment } from "@mui/icons-material"
 import { ClassNames } from "@emotion/react"
 import { getAfterLastSlash } from "../../utils/getCurrentPageFromLocationCapitalized"
+import { ContactButton } from "./ContactButton"
 
 interface HeroProps {
 }
@@ -83,7 +83,7 @@ export const Hero: React.FC<HeroProps> = () => {
                   ))}
                 </Grid>
               </Box>
-              <Button size={"small"} sx={{ color: "common.white" }} endIcon={<Assignment />}>Resume</Button>
+              <ContactButton sxColor={"common.white"} />
             </Toolbar>
           </Box>
         </Container>
