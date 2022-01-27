@@ -4,14 +4,12 @@ date: "2021-10-31"
 title: "About"
 ---
 
-## The Gist
-I was interested in psychology, medicine, Lego, and music growing up. Soon, I became more interested in what makes people tick. Then I started learning how to push boundaries to find reasons and inner mechanisms. Eventually, I discovered the elaborate ways we can work with and amongst ourselves to build almost anything. And then I found out about software engineering. 
-
-As this unfolded, I successfully married the most beautiful woman in the world and started a fantastic family with her. We live in the NY area at the moment. 
+## In General 
 
 I like to architect and research powerful, wholesome ideas. I'm motivated to find new ways for people to work better together. I strive for implicit excellence that is obvious and essential. Healthy accomplishment is an honorable thing to achieve! 
  
 ##  Software Engineering
+
 Things on my mind right now:
 - **Planning** is the foundation of anything at hand. However this Planning happens, it should anchor the goalposts of the objective. This Planning is not one size fits all. 
 - **Communicating** can be bullet points, a cookie trail, a helpful comment, a link, or a diagram. It works if it helps someone else figure something out. Knowing what people *will* look for and guiding them *in advance* is where practical teamwork starts to materialize.
