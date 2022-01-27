@@ -4,6 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import { MyLink } from "../MyLink"
 import { Assignment } from "@mui/icons-material"
 import { ClassNames } from "@emotion/react"
+import { getAfterLastSlash } from "../../utils/getCurrentPageFromLocationCapitalized"
 
 interface HeroProps {
 }
@@ -71,11 +72,11 @@ export const Hero: React.FC<HeroProps> = () => {
             <Toolbar disableGutters>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={isLessThanSm ? 1 : 2}>
-                  {["/about", "/projects", "/blog"].map(link => (
+                  {["/articles/about", "/projects", "/articles"].map(link => (
                     <Grid key={link} item>
                       <MyLink to={link} sx={{ color: "common.white" }}>
                         <Typography variant={"button"}>
-                          {link.substring(1)}
+                          {getAfterLastSlash(link)}
                         </Typography>
                       </MyLink>
                     </Grid>
