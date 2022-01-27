@@ -6,7 +6,8 @@ import { Layout } from "./layout/Layout"
 import { PageProps } from "gatsby"
 import { MarkdownPageQuery } from "../../gatsby-graphql"
 
-export default (props: { pageProps: PageProps<MarkdownPageQuery> }) => {
+type Props = { pageProps: PageProps<MarkdownPageQuery>; editInGithubLink: string }
+export default (props: Props) => {
   const adjustLinkLogoForSmallerScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"))
   const { htmlAst } = props.pageProps.data.markdownRemark
 
@@ -16,7 +17,7 @@ export default (props: { pageProps: PageProps<MarkdownPageQuery> }) => {
   }).Compiler
 
   return (
-    <Layout pageProps={props.pageProps}>
+    <Layout editInGithubLink={props.editInGithubLink} pageProps={props.pageProps}>
       <Container maxWidth={"md"}>
         <Box
           // styling here is to override anchor links for headers

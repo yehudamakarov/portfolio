@@ -4,7 +4,10 @@ import MarkdownPage from "../components/MarkdownPage"
 import { MarkdownPageQuery } from "../../gatsby-graphql"
 
 
-export default (props: PageProps<MarkdownPageQuery>) => <MarkdownPage pageProps={props} />
+type MarkdownPageContext = { id: string; editInGithubLink: string }
+export default (props: PageProps<MarkdownPageQuery, MarkdownPageContext>) => (
+  <MarkdownPage editInGithubLink={props.pageContext.editInGithubLink} pageProps={props} />
+)
 
 export const pageQuery = graphql`
     query MarkdownPage($id: String!) {

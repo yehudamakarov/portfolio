@@ -280,6 +280,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   shortTitle?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  repository?: Maybe<Scalars['String']>;
 };
 
 export type SiteFunction = Node & {
@@ -2028,6 +2029,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   shortTitle?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  repository?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -2081,6 +2083,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___shortTitle'
   | 'siteMetadata___author'
+  | 'siteMetadata___repository'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -3728,6 +3731,11 @@ export type SiteInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SiteInfoQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author' | 'description' | 'title' | 'shortTitle'>> }> };
+
+export type RepositoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RepositoryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'repository'>> }> };
 
 export type TitleQueryVariables = Exact<{ [key: string]: never; }>;
 
