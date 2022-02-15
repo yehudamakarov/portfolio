@@ -5,8 +5,15 @@ title: "Progressive Architecture"
 ---
 
 # Progressive Architecture
-## What
-Imagine a building is being designed. This building will sit on a cliff face. The foundation needs to be designed with precision. Now, while the building is being developed, there is a project to install a particular lattice into the cliff face. 
+## What 
+- The idea of architecture dictates that everything should be figured out initially. 
+- Life dictates the opposite.
+- Progressive Architecture (if someone has a better term, let's update the article) allows for extensibility of the plan.
+- A litmus test for progressive architecture can be: "Does this architecture need to be flexible to be good?"
 
-As the architect, you know that designing the foundation of this building will be more successful with the lattice, but it is not done yet. If you continue with the original plan, not having benefitted from this lattice by the time the project is done will be unsettling at best. What is the best way forward?
+## Why
+- Architecture seeks to define a representation of something before it is built.
+- Software that is built needs to be extensible.
+- Architecture that represents this software should communicate this extensibility.
+  
 
