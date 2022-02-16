@@ -29,7 +29,7 @@ exports.createPages = async function({ actions, graphql }) {
     }
   `)
 
-  // can later iterate through nested file structure for deeper routes based on article topic
+  // todo can later iterate through nested file structure for deeper routes based on article topic
   const getProjectsAndArticles = () => data.allMarkdownRemark.edges.reduce((groups, edge) => {
     if (edge.node.parent.dir.includes("src/articles")) {
       groups.articles.push(edge)
