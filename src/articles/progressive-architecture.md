@@ -13,7 +13,9 @@ title: "Progressive Architecture"
 
 ## Why
 - Architecture seeks to define a representation of something before it is built.
-- Software that is built needs to be extensible.
+- Software that is built should be extensible.
 - Architecture that represents this software should communicate this extensibility.
+
+
   
 
