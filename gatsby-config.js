@@ -35,7 +35,8 @@ module.exports = {
       options: {
         fileName: `./gatsby-graphql.ts`,
         documentPaths: [
-          "./src/**/*.{ts,tsx}"
+          "./src/**/*.{ts,tsx}",
+          "./config/**/*.{ts,tsx}"
         ]
       }
     },

@@ -3759,3 +3759,11 @@ export type MarkdownPageQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'id' | 'htmlAst'>
     & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title' | 'slug'>> }
   )> };
+
+export type PageNodesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PageNodesQuery = { allMarkdownRemark: { edges: Array<{ node: (
+        Pick<MarkdownRemark, 'id' | 'htmlAst'>
+        & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title' | 'slug'>>, parent?: Maybe<Pick<File, 'name' | 'dir' | 'absolutePath'>> }
+      ) }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'repository'>> }> };
