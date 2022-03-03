@@ -57,7 +57,7 @@ const getProjectsAndArticles = (pageData: PageNodesQuery) => {
 }
 
 const getProjectPath = absolutePath => absolutePath.substring(absolutePath.indexOf("/src"))
-const getSlugPath = (projectPath: string) => projectPath.replace("/src/", "")
+const getSlugPath = (projectPath: string) => projectPath.replace("/src/", "").replace(/\.[^/.]+$/, "")
 
 const makePage = (edge: edgeType, pageData: PageNodesQuery, actions) => {
   const projectPath = getProjectPath(edge.node.parent.absolutePath)
