@@ -10,14 +10,14 @@ interface SeoProps {
   author?: string
 }
 
-export const SeoHelmetConcern: React.FC<SeoProps> = ({
-                                                       pageDescription,
-                                                       defaultTitle,
-                                                       lang = "",
-                                                       meta = [],
-                                                       pageName,
-                                                       author = ""
-                                                     }) => {
+export const MyHelmet: React.FC<SeoProps> = ({
+                                               pageDescription,
+                                               defaultTitle,
+                                               lang = "",
+                                               meta = [],
+                                               pageName,
+                                               author = ""
+                                             }) => {
   const titleTemplate = defaultTitle && pageName ? `%s | ${pageName}` : null
   const mergedMeta = meta.concat([
     {
@@ -62,6 +62,12 @@ export const SeoHelmetConcern: React.FC<SeoProps> = ({
       title={defaultTitle}
       titleTemplate={titleTemplate}
       meta={mergedMeta}
-    />
+    >
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
   )
 }

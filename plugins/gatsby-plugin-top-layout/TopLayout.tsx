@@ -1,9 +1,10 @@
 import * as React from "react"
+import { useEffect, useState } from "react"
 import CssBaseline from "@mui/material/CssBaseline"
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles"
 import { useDarkMode } from "../../src/utils/useDarkMode"
-import MyTopHelmet from "./helmet/MyTopHelmet"
-import { useEffect, useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { SiteInfoQuery } from "../../gatsby-graphql"
 
 export interface DarkModeContextType {
   darkModeEnabled: boolean
@@ -16,7 +17,22 @@ export const DarkModeContext = React.createContext<DarkModeContextType>({
   }
 })
 
-export default function TopLayout(props) {
+export default function TopLayout({ children }) {
+  const siteInfoQuery = useStaticQuery<SiteInfoQuery>(
+    graphql`
+        query SiteInfo {
+            site {
+                siteMetadata {
+                    author
+                    description
+                    title
+                    shortTitle
+                }
+            }
+        }
+    `
+  )
+
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode()
   const [isClient, setIsClient] = useState(false)
   useEffect(() => setIsClient(true), [setIsClient, darkModeEnabled])
@@ -36,7 +52,7 @@ export default function TopLayout(props) {
               paper: "#121215"
             },
             text: {
-              primary: "#bdbdc0",
+              primary: "#dfdfe0",
               secondary: textWhite
             },
             common: {
@@ -91,12 +107,12 @@ export default function TopLayout(props) {
 
   return (
     <React.Fragment key={String(isClient)}>
-      <MyTopHelmet />
+      {/*<MyTopHelmet />*/}
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <DarkModeContext.Provider value={{ darkModeEnabled, setDarkModeEnabled }}>
-          {props.children}
+          {children}
         </DarkModeContext.Provider>
       </ThemeProvider>
     </React.Fragment>

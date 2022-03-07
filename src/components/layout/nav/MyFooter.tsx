@@ -14,6 +14,7 @@ export const MyFooter = ({ editInGithubLink, renderBackHome }) => (
           <Grid item><SocialIcon type={"github"} /></Grid>
           <Grid item><SocialIcon type={"linkedin"} /></Grid>
           <Grid item><SocialIcon type={"youtube"} /></Grid>
+          <Grid item><SocialIcon type={"instagram"} /></Grid>
         </Grid>
         {renderBackHome && <Box sx={{ ml: 1 }}><BackHomeButton /></Box>}
         {editInGithubLink && <Box sx={{ ml: 1 }}><EditInGithubButton href={editInGithubLink} /></Box>}

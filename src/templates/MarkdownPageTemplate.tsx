@@ -1,10 +1,10 @@
 import * as React from "react"
 import { graphql, PageProps } from "gatsby"
-import MarkdownPage from "../components/MarkdownPage"
+import MarkdownPage from "./MarkdownPage"
 import { MarkdownPageQuery } from "../../gatsby-graphql"
+import { MarkdownPageContext } from "../../config/util/createArticlePages"
 
 
-type MarkdownPageContext = { id: string; editInGithubLink: string }
 export default (props: PageProps<MarkdownPageQuery, MarkdownPageContext>) => (
   <MarkdownPage editInGithubLink={props.pageContext.editInGithubLink} pageProps={props} />
 )
@@ -17,7 +17,11 @@ export const pageQuery = graphql`
             frontmatter {
                 date
                 title
-                slug
+            }
+            headings {
+                id
+                depth
+                value
             }
         }
     }

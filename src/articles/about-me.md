@@ -1,8 +1,11 @@
 ---
-slug: "about"
-date: "2021-10-31"
-title: "About"
+date: 2022-01-11T22:21:34
+updateDate: 2022-03-15
+title: About Me
+tags: ["#personal"]
+headline: An attempt at sharing a little about myself.
 ---
+
 
 ## In General 
 
