@@ -7,22 +7,22 @@ import { GithubHomeButton } from "./titleBar/buttons/GithubHomeButton"
 export const MyHeader = () => {
   const theme = useTheme()
   return (
-    <Box sx={{ ...theme.mixins.toolbar }}>
+    // <Box sx={{ ...theme.mixins.toolbar }}>
       <AppBar
         color={"secondary"}
         enableColorOnDark={true}
         elevation={1}
         variant={"elevation"}
-        position="fixed"
+        position="sticky"
       >
         <Container maxWidth={"lg"}>
           <Toolbar disableGutters>
             <HomeButton sxProps={{ flexGrow: 1 }} />
             <DarkModeButton />
-            <GithubHomeButton sxProps={{ marginLeft: 1, color: "common.white" }} />
+            <GithubHomeButton sxProps={{ marginLeft: 0.5, color: "common.white" }} />
           </Toolbar>
         </Container>
       </AppBar>
-    </Box>
+    // </Box>
   )
 }

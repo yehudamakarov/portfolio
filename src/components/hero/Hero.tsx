@@ -3,7 +3,7 @@ import { Box, Container, Grid, Theme, Toolbar, Typography, useMediaQuery, useThe
 import { StaticImage } from "gatsby-plugin-image"
 import { MyLink } from "../MyLink"
 import { ClassNames } from "@emotion/react"
-import { getAfterLastSlash } from "../../utils/getCurrentPageFromLocationCapitalized"
+import { getAfterLastSlash } from "../../utils/getCurrentPageFromLocationPathname"
 import { ContactButton } from "./ContactButton"
 
 interface HeroProps {
@@ -72,8 +72,9 @@ export const Hero: React.FC<HeroProps> = () => {
             <Toolbar disableGutters>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={isLessThanSm ? 1 : 2}>
-                  {["/articles/about", "/projects", "/articles"].map(link => (
+                  {["/articles/about-me", "/projects", "/articles"].map(link => (
                     <Grid key={link} item>
+                      {/*todo replicate this but for the breadcrumbs and tighter*/}
                       <MyLink to={link} sx={{ color: "common.white" }}>
                         <Typography variant={"button"}>
                           {getAfterLastSlash(link)}

@@ -26,7 +26,7 @@ const isNotAnchorOrImageLink = className => {
 const getTypography = (header: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") => (p) => {
   const { id, ...rest } = p
   rest.children.unshift(<span key={id} className={"anchor-offset"} id={id} />)
-  return <Typography sx={{ mt: header === "h1" ? 0 : 2, color: "text.secondary" }} variant={header} {...rest} />
+  return <Typography sx={{ mt: header === "h1" ? 0 : 2 }} variant={header} {...rest} />
 }
 
 // noinspection JSPotentiallyInvalidConstructorUsage
@@ -73,8 +73,6 @@ const getFootnoteLinks = (p) => {
 }
 
 export const moreMarkdownStyling = (adjustLinkLogoForSmallerScreen: boolean): SxProps<Theme> => ({
-    my: 3,
-    p: 2,
     "& .anchor-offset": {
       top: -80, // Offset for the anchor.
       position: "absolute"

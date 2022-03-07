@@ -3,8 +3,8 @@ import { MyHeader } from "./nav/MyHeader"
 import { MyFooter } from "./nav/MyFooter"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
 import { SiteInfoQuery } from "../../../gatsby-graphql"
-import { SeoHelmetConcern } from "../seo/SeoHelmetConcern"
-import { getCurrentPageFromLocationCapitalized } from "../../utils/getCurrentPageFromLocationCapitalized"
+import { MyHelmet } from "../MyHelmet"
+import { getCurrentPageFromLocationPathname } from "../../utils/getCurrentPageFromLocationPathname"
 
 interface LayoutProps {
   pageProps: PageProps
@@ -30,12 +30,12 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     `
   )
 
-  const pageName = getCurrentPageFromLocationCapitalized(props.pageProps.location)
+  const pageName = getCurrentPageFromLocationPathname(props.pageProps.location.pathname)
   const { pageDescription } = props
 
   return (
     <PageNameContext.Provider value={pageName}>
-      <SeoHelmetConcern
+      <MyHelmet
         pageDescription={pageDescription ? pageDescription : siteInfoQuery.site.siteMetadata.description}
         pageName={pageName}
         defaultTitle={siteInfoQuery.site.siteMetadata.title}

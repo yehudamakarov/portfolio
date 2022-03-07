@@ -1,10 +1,12 @@
 ---
-slug: "example"
-date: "2021-10-31"
-title: "Example"
+date: 2022-03-11T22:21:34
+updateDate: 2022-03-15
+title: Markdown Example
+tags: ["#example", "#markdown"]
+headline: Markdown formatting examples (usually to see how I'm rendering markdown)
 ---
 
-## Example...
+## Basic Examples
 
 Paragraphs are separated by a blank line.
 
@@ -33,10 +35,7 @@ Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
 in chapters 12--14"). Three dots ... will be converted to an ellipsis.
 Unicode is supported. ☺
 
-
-
-An h2 header
-------------
+## An h2 header
 
 Here's a numbered list:
 
@@ -82,9 +81,9 @@ Now a nested list:
 
 1. First, get these ingredients:
 
-    * carrots
-    * celery
-    * lentils
+   * carrots
+   * celery
+   * lentils
 
 2. Boil some water.
 
@@ -121,8 +120,6 @@ Tables can look like this:
 | `git status` | List all *new or modified* files |
 | `git diff` | Show file differences that **haven't been** staged |
 
-Here's a definition list:
-
 and images can be specified like so:
+![quarry](./quarry.jpeg "An exemplary image")
 
-![quarry](../../../src/images/quarry.jpeg "An exemplary image")
