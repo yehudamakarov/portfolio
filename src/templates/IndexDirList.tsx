@@ -8,10 +8,9 @@ import { IndexDirListHeader } from "./IndexDirListHeader"
 import Xarrow from "react-xarrows"
 import { Box, useTheme } from "@mui/material"
 import useMeasure from "react-use-measure"
-import { animated, config, SpringRef, useChain, useSpringRef, useTransition } from "react-spring"
+import { animated, config, useTransition } from "react-spring"
 
 export function IndexDirList(props: {
-  cardTransitionRef: SpringRef,
   location: WindowLocation<WindowLocation["state"]>,
   subFolders: FoldersImmediatelyUnderQuery["indexes"]["nodes"]
 }) {
@@ -19,31 +18,27 @@ export function IndexDirList(props: {
   const [ref, bounds] = useMeasure({ debounce: 200 })
   const [items, setItems] = useState([{ id: "listHeader", path: "" }].concat(props.subFolders))
   const [moreItems, setMoreItems] = useState([])
+  // const items = [{ id: "listHeader", path: "" }].concat(props.subFolders)
+  console.log("items: ", items)
 
-  const transitionRef = useSpringRef()
   const transition = useTransition(items, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: config.stiff,
-    trail: 100,
+    trail: 200,
     onRest: () => {
       setMoreItems(props.subFolders)
-    },
-    ref: transitionRef
+    }
   })
 
-  const lineTransitionRef = useSpringRef()
   const lineTransition = useTransition(moreItems, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: config.stiff,
-    trail: 100,
-    ref: lineTransitionRef
+    trail: 150
   })
-
-  useChain([transitionRef, lineTransitionRef, props.cardTransitionRef], [0, .2])
 
 
   return (
