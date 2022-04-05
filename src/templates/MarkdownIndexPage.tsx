@@ -9,6 +9,8 @@ import { IndexCardList } from "./IndexCardList"
 import * as qs from "query-string"
 import { MarkdownPageContext } from "../../config/util/createArticlePages"
 import { WindowLocation } from "@reach/router"
+import { useEffect, useState } from "react"
+import { useSpringRef, useTransition } from "react-spring"
 
 function getPathname(location: WindowLocation<unknown>, value: string) {
   let lastPositionToRemove = location.search.indexOf(value) + value.length
@@ -31,6 +33,16 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
   let cards = props.pageProps.data.contentPages.nodes
   let tags = []
 
+  const [items, setItems] = useState([])
+  const cardTransitionRef = useSpringRef()
+  const transition = useTransition(items, {
+    from: { opacity: 0, transform: "translate3d(0,100vh,0)" },
+    enter: { opacity: 1, transform: "translate3d(0,0,0)" },
+    leave: { opacity: 0, transform: "translate3d(0,100vh,0)" },
+    trail: 150,
+    ref: cardTransitionRef
+  })
+
   const params = qs.parse(props.pageProps.location.search)
 
   if (params.tag) {
@@ -46,11 +58,13 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
       )
   }
 
+  setItems(cards)
+
   return (
     <Layout pageProps={props.pageProps}>
       <Container>
         <Box sx={{ mt: 4 }}>
-          <IndexDirList location={props.pageProps.location} subFolders={props.pageProps.data.indexes.nodes} />
+          <IndexDirList cardTransitionRef={cardTransitionRef} location={props.pageProps.location} subFolders={props.pageProps.data.indexes.nodes} />
         </Box>
         {tags.length > 0 && (
           <Box sx={{ mt: 4 }}>
@@ -72,7 +86,7 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
           </Box>
         )}
         <Box sx={{ mt: 4 }}>
-          <IndexCardList location={props.pageProps.location} cards={cards} />
+          <IndexCardList transition={transition} location={props.pageProps.location} cards={cards} />
         </Box>
       </Container>
     </Layout>
