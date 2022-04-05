@@ -38,67 +38,95 @@ export default function TopLayout({ children }) {
   useEffect(() => setIsClient(true), [setIsClient, darkModeEnabled])
 
   const getOptions = (darkModeEnabled: boolean): ThemeOptions => {
-    const textWhite = "#d9d6d6"
     return ({
       palette: {
         ...(darkModeEnabled
           ? {
             mode: "dark",
+            primary: {
+              main: 'rgba(2,119,189,0.91)',
+              contrastText: '#fdf9f1',
+            },
             secondary: {
-              main: "#121520"
+              main: '#7CB46A',
+              contrastText: '#FDF9F1',
+            },
+            error: {
+              main: '#e24813',
+              contrastText: '#FDF9F1',
             },
             background: {
-              default: "#0b0d14",
-              paper: "#121215"
+              default: '#141929',
+              paper: '#1B2237',
             },
             text: {
-              primary: "#dfdfe0",
-              secondary: textWhite
+              primary: '#FDF9F1',
             },
-            common: {
-              white: textWhite
-            }
           }
           : {
             mode: "light",
+            primary: {
+              main: "#1B2237",
+              contrastText: "#fdf9f1"
+            },
             secondary: {
-              main: "#171b29"
+              main: "#4c7a3d",
+              contrastText: "#FDF9F1"
+            },
+            error: {
+              main: "#ba3912",
+              contrastText: "#FDF9F1"
+            },
+            background: {
+              paper: "#F9F9F6",
+              default: "#F8F8F7"
             },
             text: {
-              primary: "#1a1a1c",
-              secondary: "#181819"
+              primary: "#10140D",
+              disabled: "rgba(16,20,13,0.38)",
+              secondary: "#002f48"
             }
           })
       },
       typography: {
         h1: {
-          fontSize: "2.5rem",
-          fontWeight: 600
+          fontSize: "2.2rem",
+          fontWeight: 900,
+          lineHeight: 0.99
         },
         h2: {
-          fontSize: "2.1rem",
-          fontWeight: 600
+          fontSize: "2rem",
+          fontWeight: 700
         },
         h3: {
           fontSize: "1.9rem",
-          fontWeight: 600
+          fontWeight: 700
         },
         h4: {
-          fontSize: "1.7rem",
-          fontWeight: 600
+          fontSize: "1.4rem",
+          fontWeight: 700
         },
         h5: {
-          fontSize: "1.5rem",
-          fontWeight: 600
+          fontSize: "1.3rem"
         },
-        h6: {
-          fontWeight: 600
+        fontFamily: "Lato",
+        fontSize: 13,
+        fontWeightRegular: 500,
+        fontWeightMedium: 700,
+        fontWeightBold: 900,
+        subtitle1: {
+          fontWeight: 700,
+          fontFamily: "Lato"
+        },
+        body1: {
+          fontSize: "0.93rem"
         },
         subtitle2: {
-          fontWeight: 600
+          fontWeight: 700,
+          fontSize: "0.83rem"
         },
-        subtitle1: {
-          fontWeight: 600
+        overline: {
+          fontWeight: 500
         }
       }
     })

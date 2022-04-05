@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = () => {
               textAlign: "left"
             }
           }}>
-            <Typography sx={{ color: "common.white" }} variant={"body2"}>
+            <Typography sx={{ color: "primary.contrastText" }} variant={"body2"}>
               Welcome to my site. I'm a software craftsman. Feel free to reach out, or browse around.
             </Typography>
           </Box>
@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = () => {
                   {["/articles/about-me", "/projects", "/articles"].map(link => (
                     <Grid key={link} item>
                       {/*todo replicate this but for the breadcrumbs and tighter*/}
-                      <MyLink to={link} sx={{ color: "common.white" }}>
+                      <MyLink to={link} sx={{ color: "primary.contrastText" }}>
                         <Typography variant={"button"}>
                           {getAfterLastSlash(link)}
                         </Typography>
@@ -84,7 +84,7 @@ export const Hero: React.FC<HeroProps> = () => {
                   ))}
                 </Grid>
               </Box>
-              <ContactButton sxColor={"common.white"} />
+              <ContactButton sxColor={"primary.contrastText"} />
             </Toolbar>
           </Box>
         </Container>

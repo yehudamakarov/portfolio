@@ -29,7 +29,7 @@ export function MyBreadcrumbs(props: { dirName: string }) {
 
   return (
     <Breadcrumbs maxItems={2} aria-label="breadcrumb">
-      <MyLink to={"/"}>
+      <MyLink sx={{ color: "text.primary" }} to={"/"}>
         <IconButton size={"small"}>
           <CottageOutlinedIcon fontSize={"inherit"} />
         </IconButton>

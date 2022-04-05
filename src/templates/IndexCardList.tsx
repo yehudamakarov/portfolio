@@ -14,9 +14,9 @@ export function IndexCardList(props: {
   cards: FoldersImmediatelyUnderQuery["contentPages"]["nodes"]
 }) {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={4}>
       {props.cards.map(value => (
-        <Grid key={value.id} item xs={12} sm={6}>
+        <Grid key={value.id} item xs={12} sm={4}>
           <ArticleIndexCard
             location={props.location}
             path={value.path}

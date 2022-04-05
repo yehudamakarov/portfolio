@@ -1,5 +1,15 @@
 import { MarkdownPageContext } from "../../config/util/createArticlePages"
-import { Card, CardActionArea, CardContent, CardMedia, Chip, Typography } from "@mui/material"
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Chip,
+  Grid,
+  Typography
+} from "@mui/material"
 import { GatsbyImage } from "gatsby-plugin-image"
 import * as React from "react"
 import { MyLink } from "../components/MyLink"
@@ -7,6 +17,7 @@ import { navigate, PageProps } from "gatsby"
 import { MarkdownIndexContext } from "./MarkdownIndexPageTemplate"
 import { FoldersImmediatelyUnderQuery } from "../../gatsby-graphql"
 import { WindowLocation } from "@reach/router"
+import LibraryBooksSharpIcon from "@mui/icons-material/LibraryBooksSharp"
 
 function getPathname(location: WindowLocation<unknown>, tag: string) {
   if (tag[0] === "#") {
@@ -39,35 +50,40 @@ export function ArticleIndexCard(props: {
               <GatsbyImage alt={featuredImage.name} image={featuredImage?.childImageSharp?.gatsbyImageData} />
             </CardMedia>
           )}
-          <CardContent>
+          <CardContent sx={{ p: 2 }}>
             <Typography gutterBottom variant="h4" component="div">
               {title ? title : "title needed"}
             </Typography>
             {headline && (
-              <Typography variant={"caption"} color="text.secondary">
+              <Typography variant={"caption"}>
                 {headline}
               </Typography>
             )}
           </CardContent>
         </CardActionArea>
       </MyLink>
-      <CardContent>
-        {tags &&
-          tags.map((value, index) => (
-            <Chip sx={{ mr: 1 }}
+      <CardActions sx={{ px: 3, pb: 2 }}>
+        <Grid container>
+          <Grid sx={{ flexGrow: 1 }}>
+            {tags &&
+              tags.map((value, index) => (
+                <Chip
+                  color={"primary"}
+                  sx={{ mr: 1 }}
                   key={value + String(index)}
                   size="small"
                   label={value}
                   onClick={async () => {
                     await navigate(getPathname(props.location, value))
                   }}
-            />
-          ))}
-      </CardContent>
-      {/*<CardActions>*/}
-      {/*  <EditInGithubButton href={editInGithubLink} />*/}
-      {/*  /!*  <Button size="small">Learn More</Button>*!/*/}
-      {/*</CardActions>*/}
+                />
+              ))}
+          </Grid>
+          <Grid>
+            <Button startIcon={<LibraryBooksSharpIcon />} size="small">Read</Button>
+          </Grid>
+        </Grid>
+      </CardActions>
     </Card>
   )
 }

@@ -57,13 +57,15 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
             <Typography variant={"caption"}> Filtered by: </Typography>
             {tags.map((value, index) => {
               return (
-                <Chip sx={{ mr: 1 }}
-                      key={value + String(index)}
-                      size="small"
-                      label={value}
-                      onDelete={async () => {
-                        await navigate(getPathname(props.pageProps.location, value))
-                      }}
+                <Chip
+                  color={"primary"}
+                  sx={{ mr: 1 }}
+                  key={value + String(index)}
+                  size="small"
+                  label={"#" + value}
+                  onDelete={async () => {
+                    await navigate(getPathname(props.pageProps.location, value))
+                  }}
                 />
               )
             })}

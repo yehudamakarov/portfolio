@@ -10,10 +10,10 @@ interface PinnedRepositoriesCardProps {
 export const PinnedRepositoriesCard: React.FC<PinnedRepositoriesCardProps> = ({ pr }) => {
   return (
     <Box>
-      <Link href={pr.url} sx={{color: 'text.primary'}} underline={"hover"}>
+      <Link href={pr.url} sx={{color: 'primary.main'}} underline={"hover"}>
         <Grid alignItems={"flex-start"} container spacing={1}>
           <Grid sx={(theme) => ({ paddingTop: `${theme.spacing(1)}px !important` })} item>
-            <Icon>
+            <Icon >
               <Book />
             </Icon>
           </Grid>
