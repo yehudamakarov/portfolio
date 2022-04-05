@@ -27,14 +27,13 @@ export const IndexDirListEl = (props: { arrowId: string; dirName: string }) => {
         borderRadius: 3,
         borderWidth: 3,
         borderStyle: "solid",
-        borderColor: "divider",
+        borderColor: "primary.main",
         display: "block",
-        ml: 5,
-        mb: 0.5,
+        mb: 1,
         px: 1.5,
         transition: "border-color 0.2s",
         "&:hover": {
-          borderColor: "text.primary",
+          borderColor: "primary.dark",
           backgroundColor: "action.hover"
         }
       }}>

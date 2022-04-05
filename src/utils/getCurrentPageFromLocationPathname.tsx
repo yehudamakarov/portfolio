@@ -3,7 +3,6 @@ export const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.
 export const getAfterLastSlash = pathname => /[^/]*$/.exec(pathname)[0]
 
 export const splitAndCapitalize = (pageName: string) => {
-  console.log("page name: ", pageName)
   const pageParts = pageName.split("-").length > 0 ? pageName.split("-") : [pageName]
   return pageParts
     .map((s, i) => i === 0 || ["to", "of", "for"].some((dontCapitalize) => dontCapitalize !== s) ? capitalize(s) : s)

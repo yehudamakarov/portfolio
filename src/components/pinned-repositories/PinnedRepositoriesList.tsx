@@ -9,7 +9,7 @@ interface PinnedRepositoriesListProps {
 
 export const PinnedRepositoriesList: React.FC<PinnedRepositoriesListProps> = ({ pinnedRepos }) => {
   const buttonOverlapsPaper = useMediaQuery((theme: Theme) => theme.breakpoints.down(1035))
-  const header = <Typography sx={{ marginBottom: 3 }} variant={"h5"}>
+  const header = <Typography sx={{ marginBottom: 3, color: "primary.main" }} variant={"h3"}>
     My Pinned Repositories
   </Typography>
   const items = pinnedRepos.map(pr => (<PinnedRepositoriesCard key={pr.id} pr={pr} />))

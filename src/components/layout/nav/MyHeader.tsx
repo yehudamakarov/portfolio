@@ -1,28 +1,27 @@
 import * as React from "react"
-import { AppBar, Box, Container, Toolbar, useTheme } from "@mui/material"
+import { AppBar, Container, Toolbar, useTheme } from "@mui/material"
 import { HomeButton } from "./titleBar/buttons/HomeButton"
 import DarkModeButton from "./titleBar/buttons/DarkModeButton"
 import { GithubHomeButton } from "./titleBar/buttons/GithubHomeButton"
+import { DarkModeContext } from "../../../../plugins/gatsby-plugin-top-layout/TopLayout"
 
 export const MyHeader = () => {
-  const theme = useTheme()
   return (
-    // <Box sx={{ ...theme.mixins.toolbar }}>
-      <AppBar
-        color={"secondary"}
-        enableColorOnDark={true}
-        elevation={1}
-        variant={"elevation"}
-        position="sticky"
-      >
-        <Container maxWidth={"lg"}>
-          <Toolbar disableGutters>
-            <HomeButton sxProps={{ flexGrow: 1 }} />
-            <DarkModeButton />
-            <GithubHomeButton sxProps={{ marginLeft: 0.5, color: "common.white" }} />
-          </Toolbar>
-        </Container>
-      </AppBar>
-    // </Box>
+    <DarkModeContext.Consumer>
+      {(value => (
+        <AppBar
+          elevation={1}
+          variant={"elevation"}
+          position="sticky"
+        >
+          <Container maxWidth={"lg"}>
+            <Toolbar disableGutters>
+              <HomeButton sxProps={{ flexGrow: 1 }} />
+              <DarkModeButton />
+              <GithubHomeButton sxProps={{ marginLeft: 0.5, color: "primary.contrastText" }} />
+            </Toolbar>
+          </Container>
+        </AppBar>))}
+    </DarkModeContext.Consumer>
   )
 }

@@ -8,13 +8,13 @@ import * as React from "react"
 export function IndexDirListHeader(props: { dirName: string }) {
   const previousRoute = getPreviousRoute(props.dirName)
   return (
-    <Grid sx={{ mb: 0.5 }} spacing={2} container>
+    <Grid sx={{ mb: 1 }} spacing={2} container>
       <Grid item sx={{ flexGrow: 1 }}>
         <Box sx={{
           borderRadius: 3,
           borderWidth: 3,
           borderStyle: "solid",
-          borderColor: "divider",
+          borderColor: "primary.main",
           display: "block",
           px: 1.5
         }}>
@@ -26,7 +26,7 @@ export function IndexDirListHeader(props: { dirName: string }) {
           <MyLink to={previousRoute} underline={"none"}>
             <Button
               size={"small"}
-              sx={{ color: "text.primary" }}
+              sx={{ color: "primary.main" }}
               startIcon={<ArrowBack />}
             >
               Back
