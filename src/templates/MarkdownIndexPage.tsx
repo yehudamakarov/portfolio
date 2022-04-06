@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useEffect, useState } from "react"
 import { navigate, PageProps } from "gatsby"
 import { Layout } from "../components/layout/Layout"
 import { Box, Chip, Container, Grid, Typography, useTheme } from "@mui/material"
@@ -12,7 +13,7 @@ import { IndexDirListHeader } from "./IndexDirListHeader"
 import { IndexDirListEl } from "./IndexDirListEl"
 import Xarrow from "react-xarrows"
 import { ArticleIndexCard } from "./ArticleIndexCard"
-import { animated, config, useTrail } from "react-spring"
+import { animated, config, useChain, useSpring, useSpringRef, useTrail } from "react-spring"
 
 function getPathname(location: WindowLocation<unknown>, value: string) {
   let lastPositionToRemove = location.search.indexOf(value) + value.length
@@ -35,41 +36,57 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
   const theme = useTheme()
   const [ref, bounds] = useMeasure({ debounce: 200 })
 
-  let cards = props.pageProps.data.contentPages.nodes
-  console.log("initial cards", cards)
-  let tags = []
+  const initialCards = props.pageProps.data.contentPages.nodes
+  const [cards, setCards] = useState(initialCards)
 
-  const params = qs.parse(props.pageProps.location.search)
-  if (params.tag) {
-    tags = typeof params.tag === "string" ? [params.tag] : params.tag
-    cards = cards
-      .filter(card => (card.pageContext as MarkdownPageContext).frontmatter.tags
+  const search = props.pageProps.location.search
+  const path = props.pageProps.location.pathname
+
+  const [selectedTags, setSelectedTags] = useState([])
+
+  useEffect(() => {
+    const params = qs.parse(search)
+    if (params.tag) {
+      const toSet = typeof params.tag === "string" ? [params.tag] : params.tag
+      setSelectedTags(toSet)
+      setCards(cards.filter(card => (card.pageContext as MarkdownPageContext).frontmatter.tags
         .map(tag => tag.replace("#", ""))
-        .some(
-          cardsTag => tags.some(
-            queryTag => cardsTag === queryTag
-          )
-        )
-      )
-    console.log("filtered: ", cards)
-  }
-  const filteringByTag = tags.length > 0
-  console.log("filteringByTag: ", filteringByTag)
+        .some(cardsTag => toSet.some(queryTag => cardsTag === queryTag))))
+    } else {
+      setSelectedTags([])
+      setCards(initialCards)
+    }
+  }, [search, path])
+
 
   const subFolders = props.pageProps.data.indexes.nodes
   const listItems = [{ id: "listHeader", path: "" }].concat(subFolders)
 
   // =============================================================================== //
 
-  console.log("length of cards: ", cards.length)
+  const cardTrailRef = useSpringRef()
+  const filteringByTag = selectedTags.length > 0
   const cardTrail = useTrail(cards.length, {
-    from: { opacity: 0, transform: "translate(0, 50vh)" },
+    ref: cardTrailRef,
+    from: { opacity: 0, transform: "translate(0, 20vh)" },
     to: { opacity: 1, transform: "translate(0, 0)" },
     config: config.stiff,
     reset: filteringByTag
   })
 
   // =============================================================================== //
+
+  const selectedTagsSpringRef = useSpringRef()
+  const selectedTagsSpring = useSpring({
+    ref: selectedTagsSpringRef,
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: config.stiff
+  })
+
+  // =============================================================================== //
+
+  useChain([cardTrailRef, selectedTagsSpringRef], [1, 1])
 
   return (
     <Layout pageProps={props.pageProps}>
@@ -103,10 +120,10 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
             />
           ))}
         </Box>
-        {filteringByTag && (
+        {filteringByTag && <animated.div style={selectedTagsSpring}>
           <Box sx={{ mt: 4 }}>
             <Typography variant={"caption"}> Filtered by: </Typography>
-            {tags.map((value, index) => {
+            {selectedTags.map((value, index) => {
               return (
                 <Chip
                   color={"primary"}
@@ -121,7 +138,7 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
               )
             })}
           </Box>
-        )}
+        </animated.div>}
         <Box sx={{ mt: 4 }}>
           <Grid container spacing={4}>
             {cardTrail.map((style, i) => (
