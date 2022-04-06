@@ -13,7 +13,7 @@ import { IndexDirListHeader } from "./IndexDirListHeader"
 import { IndexDirListEl } from "./IndexDirListEl"
 import Xarrow from "react-xarrows"
 import { ArticleIndexCard } from "./ArticleIndexCard"
-import { animated, config, useChain, useSpring, useSpringRef, useTrail } from "react-spring"
+import { animated, config, useSpring, useTrail } from "react-spring"
 
 function getPathname(location: WindowLocation<unknown>, value: string) {
   let lastPositionToRemove = location.search.indexOf(value) + value.length
@@ -64,29 +64,41 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
 
   // =============================================================================== //
 
-  const cardTrailRef = useSpringRef()
   const filteringByTag = selectedTags.length > 0
+  // const selectedTagsSpringRef = useSpringRef()
+  const selectedTagsSpring = useSpring({
+    // ref: selectedTagsSpringRef,
+    from: { opacity: 0 },
+    to: filteringByTag
+      ? { opacity: 1 }
+      : { opacity: 0 },
+    config: config.stiff,
+    delay: 200
+  })
+
+  // =============================================================================== //
+
+  // const cardTrailRef = useSpringRef()
   const cardTrail = useTrail(cards.length, {
-    ref: cardTrailRef,
+    // ref: cardTrailRef,
     from: { opacity: 0, transform: "translate(0, 20vh)" },
     to: { opacity: 1, transform: "translate(0, 0)" },
-    config: config.stiff,
+    config: { ...config.stiff },
     reset: filteringByTag
   })
 
   // =============================================================================== //
 
-  const selectedTagsSpringRef = useSpringRef()
-  const selectedTagsSpring = useSpring({
-    ref: selectedTagsSpringRef,
+  const lineTrail = useTrail(subFolders.length, {
     from: { opacity: 0 },
     to: { opacity: 1 },
-    config: config.stiff
+    config: config.stiff,
+    delay: 500
   })
 
   // =============================================================================== //
 
-  useChain([cardTrailRef, selectedTagsSpringRef], [1, 1])
+  // useChain([selectedTagsSpringRef, cardTrailRef], [0.2, 0.5])
 
   return (
     <Layout pageProps={props.pageProps}>
@@ -103,21 +115,23 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
                 <IndexDirListEl arrowId={item.id} dirName={item.path} />
               </Box>
             ))}
-          {subFolders.map(item => (
-            <Xarrow
-              start={"listHeader"}
-              end={item.id}
-              lineColor={theme.palette.primary.main}
-              strokeWidth={2}
-              showHead={false}
-              startAnchor={{
-                position: "bottom",
-                offset: { x: -((bounds.width / 2) - parseInt(theme.spacing(2).slice(0, 2))) }
-              }}
-              endAnchor={"left"}
-              curveness={1}
-              key={item.id}
-            />
+          {lineTrail.map((style, i) => (
+            <animated.div style={style}>
+              <Xarrow
+                start={"listHeader"}
+                end={subFolders[i].id}
+                lineColor={theme.palette.primary.main}
+                strokeWidth={2}
+                showHead={false}
+                startAnchor={{
+                  position: "bottom",
+                  offset: { x: -((bounds.width / 2) - parseInt(theme.spacing(2).slice(0, 2))) }
+                }}
+                endAnchor={"left"}
+                curveness={1.1}
+                key={subFolders[i].id}
+              />
+            </animated.div>
           ))}
         </Box>
         {filteringByTag && <animated.div style={selectedTagsSpring}>
