@@ -7,13 +7,13 @@ import { getCurrentPageFromLocationPathname } from "../utils/getCurrentPageFromL
 import { ArrowForward } from "@mui/icons-material"
 
 export const IndexDirListEl = (props: { arrowId: string; dirName: string }) => {
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"))
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"))
+  console.log(isMobile)
   const [hovered, setHovered] = useState(false)
   const animation = useSpring({
-    to: { opacity: 1, transform: "translate3d(0%,0,0)" },
-    from: { opacity: isMobile ? 0.7 : 0, transform: "translate3d(-20%,0,0)" },
-    reverse: !hovered,
-    loop: isMobile
+    from: { opacity: 0, transform: "translate3d(-20%,0,0)" },
+    to: { opacity: isMobile ? 1 : hovered ? 1 : 0, transform: "translate3d(0%,0,0)" },
+    reverse: isMobile ? false : !hovered
   })
 
   return (
