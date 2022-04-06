@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { navigate, PageProps } from "gatsby"
 import { Layout } from "../components/layout/Layout"
 import { Box, Chip, Container, Grid, Typography, useTheme } from "@mui/material"
@@ -13,7 +13,7 @@ import { IndexDirListHeader } from "./IndexDirListHeader"
 import { IndexDirListEl } from "./IndexDirListEl"
 import Xarrow from "react-xarrows"
 import { ArticleIndexCard } from "./ArticleIndexCard"
-import { animated, config, useSpring, useTrail } from "react-spring"
+import { animated, config, useChain, useSpring, useSpringRef, useTrail, useTransition } from "react-spring"
 
 function getPathname(location: WindowLocation<unknown>, value: string) {
   let lastPositionToRemove = location.search.indexOf(value) + value.length
@@ -39,6 +39,9 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
   const initialCards = props.pageProps.data.contentPages.nodes
   const [cards, setCards] = useState(initialCards)
 
+  const subFolders = props.pageProps.data.indexes.nodes
+  const [listItems, setListItems] = useState([{ id: "listHeader", path: "" }].concat(subFolders))
+
   const search = props.pageProps.location.search
   const path = props.pageProps.location.pathname
 
@@ -58,10 +61,6 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
     }
   }, [search, path])
 
-
-  const subFolders = props.pageProps.data.indexes.nodes
-  const listItems = [{ id: "listHeader", path: "" }].concat(subFolders)
-
   // =============================================================================== //
 
   const filteringByTag = selectedTags.length > 0
@@ -78,13 +77,15 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
 
   // =============================================================================== //
 
-  // const cardTrailRef = useSpringRef()
-  const cardTrail = useTrail(cards.length, {
-    // ref: cardTrailRef,
+  const cardTrailRef = useSpringRef()
+  const cardTrail = useTransition(cards, {
+    ref: cardTrailRef,
     from: { opacity: 0, transform: "translate(0, 20vh)" },
-    to: { opacity: 1, transform: "translate(0, 0)" },
+    enter: { opacity: 1, transform: "translate(0, 0)" },
+    leave: { opacity: 0, transform: "translate(0, 20vh)" },
     config: { ...config.stiff },
-    reset: filteringByTag
+    reset: filteringByTag,
+    trail: 100
   })
 
   // =============================================================================== //
@@ -93,26 +94,39 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
     from: { opacity: 0 },
     to: { opacity: 1 },
     config: config.stiff,
-    delay: 500
+    delay: 800
   })
 
   // =============================================================================== //
 
-  // useChain([selectedTagsSpringRef, cardTrailRef], [0.2, 0.5])
+  const dirListRef = useSpringRef()
+  const dirListTransition = useTransition(listItems, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: config.stiff,
+    trail: 100,
+    ref: dirListRef
+  })
+
+  // =============================================================================== //
+
+  useChain([cardTrailRef, dirListRef], [0, 0.3])
 
   return (
     <Layout pageProps={props.pageProps}>
       <Container>
         <Box sx={{ mt: 4 }}>
-          {listItems.map(item => item.id === "listHeader"
+          {dirListTransition((style, item) => item.id === "listHeader"
             ? (
               <Box key={"listHeader"} ref={ref} id={"listHeader"}>
-                <IndexDirListHeader dirName={props.pageProps.location.pathname} />
+                <animated.div style={style}><IndexDirListHeader dirName={props.pageProps.location.pathname} />
+                </animated.div>
               </Box>
             )
             : (
               <Box key={item.id} sx={{ pl: 5 }}>
-                <IndexDirListEl arrowId={item.id} dirName={item.path} />
+                <animated.div style={style}><IndexDirListEl arrowId={item.id} dirName={item.path} /></animated.div>
               </Box>
             ))}
           {lineTrail.map((style, i) => (
@@ -155,13 +169,13 @@ export default function MarkdownIndexPage(props: { pageProps: PageProps<FoldersI
         </animated.div>}
         <Box sx={{ mt: 4 }}>
           <Grid container spacing={4}>
-            {cardTrail.map((style, i) => (
-              <Grid key={cards[i].id} item xs={12} sm={4}>
+            {cardTrail((style, item) => (
+              <Grid key={item.id} item xs={12} sm={4}>
                 <animated.div style={style}>
                   <ArticleIndexCard
                     location={props.pageProps.location}
-                    path={cards[i].path}
-                    displayContent={cards[i].pageContext as MarkdownPageContext}
+                    path={item.path}
+                    displayContent={item.pageContext as MarkdownPageContext}
                   />
                 </animated.div>
               </Grid>
