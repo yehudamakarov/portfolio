@@ -1,6 +1,6 @@
 import { Breadcrumbs, IconButton } from "@mui/material"
 import { MyLink } from "../components/MyLink"
-import CottageOutlinedIcon from "@mui/icons-material/CottageOutlined"
+import CabinIcon from '@mui/icons-material/Cabin';
 import { getCurrentPageFromLocationPathname } from "../utils/getCurrentPageFromLocationPathname"
 import * as React from "react"
 
@@ -29,9 +29,9 @@ export function MyBreadcrumbs(props: { dirName: string }) {
 
   return (
     <Breadcrumbs maxItems={2} aria-label="breadcrumb">
-      <MyLink sx={{ color: "text.primary" }} to={"/"}>
+      <MyLink to={"/"}>
         <IconButton size={"small"}>
-          <CottageOutlinedIcon fontSize={"inherit"} />
+          <CabinIcon color={"primary"} fontSize={"inherit"} />
         </IconButton>
       </MyLink>
       {structuredParts.map(value => (
